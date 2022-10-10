@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import DashBoard from "./pages/DashBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
+import Favorite from "./pages/Favorite";
 function App() {
   return (
     <>
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/dashboard/favorite" element={<Favorite />} />
           </Routes>
         </Router>
       </Box>
