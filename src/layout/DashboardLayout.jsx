@@ -5,13 +5,13 @@ import Topbar from "../components/Topbar";
 
 const DashboardLayout = ({ children }) => {
   return (
-    <Flex>
+    <Flex color={"white"}>
       <Box w={"15%"}>
         <SideBar />
       </Box>
       <Box w={"85%"}>
         <Topbar />
-        <Flex>{children}</Flex>
+        <Flex bg={"#202225"}>{children}</Flex>
       </Box>
     </Flex>
   );
