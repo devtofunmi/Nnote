@@ -7,14 +7,15 @@ const SideBar = () => {
   return (
     <Flex
       flexDirection={"column"}
-      bg={"purple.400"}
+      bg={"#181819"}
       w={"100%"}
       minH={"100vh"}
       px={4}
+      pt={"30px"}
     >
-      <Text>Nnote</Text>
-      <AddNote />
-      <Link to={"/dashboard"}>
+      <Text fontSize={"30px"}>Nnote</Text>
+      {/* <AddNote /> */}
+      <Link to={"/dashboard"} mt={"20px"}>
         <Text my={2}>Overview</Text>
       </Link>
       <Link to={"/dashboard/favorite"}>
