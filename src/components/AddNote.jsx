@@ -68,8 +68,8 @@ const AddNote = () => {
         justifyContent={"center"}
         placeItems={"center"}
         background={"   rgba(0, 0, 0, 0.5)"}
-        // visibility={"hidden"}
-        zIndex={10}
+        visibility={"hidden"}
+        zIndex={-10}
       >
         <Flex
           direction={"column"}
