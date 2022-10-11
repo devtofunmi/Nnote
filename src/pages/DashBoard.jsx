@@ -45,7 +45,9 @@ const DashBoard = () => {
     <DashboardLayout>
       <Flex>
         {/* <Text>Main</Text> */}
-        <Main />
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <Main />
+        </Flex>
       </Flex>
     </DashboardLayout>
   );
