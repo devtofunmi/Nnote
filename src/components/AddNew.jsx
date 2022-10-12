@@ -39,14 +39,20 @@ const AddNew = () => {
           </Button>
         </PopoverTrigger>
         <Portal>
-          <PopoverContent bg={"#202225"}>
+          <PopoverContent bg={"#202225"} w={"180px"}>
             <PopoverArrow />
             <PopoverBody cursor={"pointer"}>
               <Flex direction={"column"} gap={"10px"}>
-                <Button onClick={() => setShowAddNewNotePopup(true)}>
+                <Button
+                  onClick={() => setShowAddNewNotePopup(true)}
+                  w={"150px"}
+                >
                   Add New Note
                 </Button>
-                <Button onClick={() => setShowAddNewTaskPopup(true)}>
+                <Button
+                  onClick={() => setShowAddNewTaskPopup(true)}
+                  w={"150px"}
+                >
                   Add New Task
                 </Button>
               </Flex>
