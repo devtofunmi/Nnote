@@ -11,10 +11,9 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-import AddNote from "./AddNote";
-import { MdBookmarkAdd, MdNoteAdd } from "react-icons/md";
+
 import NoteCard from "./NoteCard";
-import DashboardLayout from "../layout/DashboardLayout";
+
 const Main = () => {
   return (
     <>
