@@ -55,7 +55,7 @@ const LandingPage = () => {
       >
         {FeaturesCard.map((card, i) => (
           <Flex
-            px={["70px", "40px", "30px", "130px"]}
+            px={["70px", "40px", "20px", "130px"]}
             py={"50px"}
             justifyContent={"space-between"}
             key={i}
