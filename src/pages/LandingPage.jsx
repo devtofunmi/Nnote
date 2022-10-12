@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Grid, Img, Text } from "@chakra-ui/react";
 import React from "react";
-import note from "../assets/note.jpg";
+import note from "../assets/note.png";
 import FeaturesCard from "../components/FeaturesCard";
 
 const LandingPage = () => {
@@ -13,10 +13,10 @@ const LandingPage = () => {
         flexDirection={["column-reverse", "row"]}
       >
         <Box w={["100%", "60%"]} mt={"70px"}>
-          <Text fontSize={["40px", "50px"]} fontWeight={"bold"}>
+          <Text fontSize={["40px", "50px"]} fontWeight={"bold"} color={"white"}>
             BRING <Text color={"#fab004"}>iDEAS </Text> TO lIFE ~~
           </Text>
-          <Text color={"black.500"}>
+          <Text color={"#afb1b3"}>
             Notes is the best place to jot down quick thoughts or to save longer
             notes filled with checklists.
           </Text>
@@ -35,10 +35,15 @@ const LandingPage = () => {
       </Flex>
 
       <Flex flexDirection={"column"} textAlign={"center"}>
-        <Text fontWeight={500} fontSize={["25px", "30px"]} mt={"10px"}>
+        <Text
+          fontWeight={500}
+          fontSize={["25px", "30px"]}
+          mt={"10px"}
+          color={"white"}
+        >
           Focus on what matters most
         </Text>
-        <Text color={"black.500"}>Some of Nnote key features</Text>
+        <Text color={"#afb1b3"}>Some of Nnote key features</Text>
       </Flex>
       <Grid
         padding={"100px"}
@@ -52,10 +57,10 @@ const LandingPage = () => {
             <Box fontSize={"50px"} bgColor={"black"} w={"60px"} color={"white"}>
               {card.icon}
             </Box>
-            <Text fontWeight={500} fontSize={"18px"}>
+            <Text fontWeight={500} fontSize={"18px"} color={"white"}>
               {card.heading}
             </Text>
-            <Text color={"black.500"}>{card.text}</Text>
+            <Text color={"#afb1b3"}>{card.text}</Text>
           </Box>
         ))}
       </Grid>
