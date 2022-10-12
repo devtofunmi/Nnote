@@ -7,7 +7,7 @@ import Favorite from "./pages/Favorite";
 function App() {
   return (
     <>
-      <Box w={"100%"} minH={"100vh"} backgroundColor="white" color={"black"}>
+      <Box w={"100%"} minH={"100vh"} bg={"#181819"} color={"black"}>
         <Router>
           <Routes>
             <Route path="/" element={<LandingPage />} />
