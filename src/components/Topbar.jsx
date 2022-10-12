@@ -1,6 +1,6 @@
 import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
-import AddNewNote from "./AddNewNote";
+import AddNewNote from "./AddNew";
 
 const Topbar = () => {
   return (
