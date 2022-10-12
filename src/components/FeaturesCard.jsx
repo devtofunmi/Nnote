@@ -1,6 +1,3 @@
-import { BsCalendar } from "react-icons/bs";
-import { AiFillFileUnknown, AiOutlineFileSearch } from "react-icons/ai";
-import { MdOutlinePhonelink } from "react-icons/md";
 import { Img } from "@chakra-ui/react";
 import one from "../assets/one.jpg";
 import two from "../assets/two.jpg";
