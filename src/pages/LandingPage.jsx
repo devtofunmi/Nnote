@@ -65,6 +65,7 @@ const LandingPage = () => {
               // bgColor={"black"}
               justifyContent={"center"}
               color={"white"}
+              w={"40%"}
             >
               {card.icon}
             </Flex>
