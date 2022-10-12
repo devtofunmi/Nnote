@@ -11,12 +11,19 @@ import {
   Portal,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineEditNote } from "react-icons/md";
+import AddNote from "./AddNote";
 
 const AddNewNote = () => {
+  const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
+
+  const closePopup = () => {
+    setShowAddNewNotePopup(false);
+  };
   return (
     <>
+      <AddNote isOpen={showAddNewNotePopup} closePopup={closePopup} />
       <Popover>
         <PopoverTrigger>
           <Button
@@ -28,11 +35,12 @@ const AddNewNote = () => {
           </Button>
         </PopoverTrigger>
         <Portal>
-          <PopoverContent w={"90px"} bg={"#202225"}>
+          <PopoverContent bg={"#202225"}>
             <PopoverArrow />
-
             <PopoverBody cursor={"pointer"}>
-              <Text>Note</Text>
+              <Button onClick={() => setShowAddNewNotePopup(true)}>
+                Add New Note
+              </Button>
               <Text>Task</Text>
               <Text>Task</Text>
             </PopoverBody>
