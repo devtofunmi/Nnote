@@ -45,25 +45,38 @@ const LandingPage = () => {
         </Text>
         <Text color={"#afb1b3"}>Some of Nnote key features</Text>
       </Flex>
-      <Grid
-        padding={"100px"}
+      <Flex
+        justifyContent={"center"}
+        direction={"column"}
         w={"100%"}
-        templateColumns="repeat(2, 1fr)"
-        gap={"30px"}
+        gap={"50px"}
         textAlign={"center"}
+        mt={"50px"}
       >
         {FeaturesCard.map((card, i) => (
-          <Box key={i}>
-            <Box fontSize={"50px"} bgColor={"black"} w={"60px"} color={"white"}>
+          <Flex
+            px={"130px"}
+            py={"50px"}
+            justifyContent={"space-between"}
+            key={i}
+          >
+            <Flex
+              fontSize={"50px"}
+              // bgColor={"black"}
+              justifyContent={"center"}
+              color={"white"}
+            >
               {card.icon}
+            </Flex>
+            <Box>
+              <Text fontWeight={500} fontSize={"18px"} color={"white"}>
+                {card.heading}
+              </Text>
+              <Text color={"#afb1b3"}>{card.text}</Text>
             </Box>
-            <Text fontWeight={500} fontSize={"18px"} color={"white"}>
-              {card.heading}
-            </Text>
-            <Text color={"#afb1b3"}>{card.text}</Text>
-          </Box>
+          </Flex>
         ))}
-      </Grid>
+      </Flex>
     </>
   );
 };
