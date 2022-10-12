@@ -14,16 +14,19 @@ import {
 import React, { useState } from "react";
 import { MdOutlineEditNote } from "react-icons/md";
 import AddNote from "./AddNote";
-
+import AddTask from "./AddTask";
 const AddNew = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
+  const [showAddNewTaskPopup, setShowAddNewTaskPopup] = useState(false);
 
   const closePopup = () => {
     setShowAddNewNotePopup(false);
+    setShowAddNewTaskPopup(false);
   };
   return (
     <>
       <AddNote isOpen={showAddNewNotePopup} closePopup={closePopup} />
+      <AddTask isOpen={showAddNewTaskPopup} closePopup={closePopup} />
       <Popover>
         <PopoverTrigger>
           <Button
@@ -40,6 +43,9 @@ const AddNew = () => {
             <PopoverBody cursor={"pointer"}>
               <Button onClick={() => setShowAddNewNotePopup(true)}>
                 Add New Note
+              </Button>
+              <Button onClick={() => setShowAddNewTaskPopup(true)}>
+                Add New Task
               </Button>
               <Text>Task</Text>
               <Text>Task</Text>
