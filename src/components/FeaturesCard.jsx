@@ -8,7 +8,7 @@ const FeaturesCard = [
   {
     icon: <Img src={one} />,
     heading: "Plan and manage your day",
-    text: "Start your morning with a clean slate",
+    text: "Start your morning with a clean slate, Plan ahead your day with a task in  our note",
   },
   {
     icon: <Img src={two} />,
