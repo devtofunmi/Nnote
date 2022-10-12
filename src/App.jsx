@@ -4,7 +4,7 @@ import DashBoard from "./pages/DashBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import Favorite from "./pages/Favorite";
-import Task from "./components/Task";
+import Task from "./pages/Task";
 function App() {
   return (
     <>
