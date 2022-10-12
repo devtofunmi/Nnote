@@ -3,7 +3,12 @@ import { MdBookmarkAdd } from "react-icons/md";
 
 const NoteCard = () => {
   return (
-    <Box width={["90%", "25%"]} bg={"#181819"} p={"17px"} borderRadius={"10px"}>
+    <Box
+      width={["90%", "45%", "25%"]}
+      bg={"#181819"}
+      p={"17px"}
+      borderRadius={"10px"}
+    >
       <Flex>
         <Box>
           <Text fontSize={["15px", "20px"]}>why im still single</Text>
