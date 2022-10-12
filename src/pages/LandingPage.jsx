@@ -55,21 +55,22 @@ const LandingPage = () => {
       >
         {FeaturesCard.map((card, i) => (
           <Flex
-            px={"130px"}
+            px={["70px", "40px", "30px", "130px"]}
             py={"50px"}
             justifyContent={"space-between"}
             key={i}
+            direction={["column", "row"]}
           >
             <Flex
               fontSize={"50px"}
               // bgColor={"black"}
               justifyContent={"center"}
               color={"white"}
-              w={"40%"}
+              w={["100%", "40%"]}
             >
               {card.icon}
             </Flex>
-            <Box>
+            <Box mt={"30px"}>
               <Text fontWeight={500} fontSize={"18px"} color={"white"}>
                 {card.heading}
               </Text>
