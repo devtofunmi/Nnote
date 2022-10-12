@@ -63,7 +63,6 @@ const LandingPage = () => {
           >
             <Flex
               fontSize={"50px"}
-              // bgColor={"black"}
               justifyContent={"center"}
               color={"white"}
               w={["100%", "40%"]}
