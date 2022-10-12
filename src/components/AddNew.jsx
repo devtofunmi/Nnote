@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -41,14 +42,14 @@ const AddNew = () => {
           <PopoverContent bg={"#202225"}>
             <PopoverArrow />
             <PopoverBody cursor={"pointer"}>
-              <Button onClick={() => setShowAddNewNotePopup(true)}>
-                Add New Note
-              </Button>
-              <Button onClick={() => setShowAddNewTaskPopup(true)}>
-                Add New Task
-              </Button>
-              <Text>Task</Text>
-              <Text>Task</Text>
+              <Flex direction={"column"} gap={"10px"}>
+                <Button onClick={() => setShowAddNewNotePopup(true)}>
+                  Add New Note
+                </Button>
+                <Button onClick={() => setShowAddNewTaskPopup(true)}>
+                  Add New Task
+                </Button>
+              </Flex>
             </PopoverBody>
           </PopoverContent>
         </Portal>
