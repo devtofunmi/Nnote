@@ -30,7 +30,7 @@ const LandingPage = () => {
           </Flex>
         </Box>
         <Box>
-          <Img src={note} />
+          <Img width={["100%", "90%"]} src={note} />
         </Box>
       </Flex>
 
