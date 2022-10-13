@@ -1,8 +1,10 @@
 import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
+import useWindowDimensions from "../hooks/useWindowsDimensions";
 import AddNewNote from "./AddNew";
 
 const Topbar = () => {
+  const { width } = useWindowDimensions();
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
       <Input
@@ -13,9 +15,11 @@ const Topbar = () => {
           color: "#afb1b3",
         }}
       />
-      <Box>
-        <AddNewNote />
-      </Box>
+      {width > 480 && (
+        <Box>
+          <AddNewNote />
+        </Box>
+      )}
       <Flex
         align={"center"}
         gap={3}
