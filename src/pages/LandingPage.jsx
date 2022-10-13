@@ -17,9 +17,9 @@ const LandingPage = () => {
             fontSize={["40px", "90px"]}
             fontWeight={"bold"}
             color={"white"}
-            lineHeight={"100px"}
+            lineHeight={["50px", "100px"]}
           >
-            BRING <Text color={"#fab004"}>iDEAS </Text> TO lIFE
+            BRING <Text color={"#4cbf87"}>iDEAS </Text> TO lIFE
           </Text>
           <Text fontSize={"20px"} color={"#afb1b3"} maxW={"500px"}>
             Notes is the best place to jot down quick thoughts or to save longer
@@ -37,7 +37,7 @@ const LandingPage = () => {
           </Flex>
         </Box>
         <Box>
-          <Img width={["100%", "90%"]} src={note} />
+          <Img width={"700px"} src={note} />
         </Box>
       </Flex>
 
