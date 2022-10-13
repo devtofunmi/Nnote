@@ -67,7 +67,7 @@ const LandingPage = () => {
               color={"white"}
               w={["100%", "40%"]}
             >
-              {card.icon}
+              {card.image}
             </Flex>
             <Box mt={"30px"}>
               <Text fontWeight={500} fontSize={"18px"} color={"white"}>
