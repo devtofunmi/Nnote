@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -12,6 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
+import AddNewNote from "./AddNew";
 
 const SideBar = () => {
   const { width } = useWindowDimensions();
@@ -62,6 +64,12 @@ const SideBar = () => {
                   pt={"30px"}
                 >
                   <Text fontSize={"30px"}>Nnote</Text>
+
+                  {width < 480 && (
+                    <Box>
+                      <AddNewNote />
+                    </Box>
+                  )}
 
                   <Link to={"/dashboard"} mt={"20px"}>
                     <Text my={2}>Overview</Text>
