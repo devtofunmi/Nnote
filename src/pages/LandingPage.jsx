@@ -61,7 +61,7 @@ const LandingPage = () => {
         justifyContent={"center"}
         direction={"column"}
         w={"100%"}
-        gap={"50px"}
+        gap={"10px"}
         textAlign={"center"}
         mt={"50px"}
       >
