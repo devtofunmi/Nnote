@@ -42,7 +42,7 @@ const AddTask = ({ isOpen, closePopup }) => {
                 <MdOutlineClose />
               </Button>
             </Flex>
-            <Box w={"400px"} mt={"50px"}>
+            <Box w={["300px", "400px"]} mt={"50px"}>
               <Input placeholder="Task" />
 
               <Button mt={"20px"}>Submit</Button>
