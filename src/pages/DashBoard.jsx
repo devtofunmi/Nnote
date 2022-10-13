@@ -1,4 +1,4 @@
-import { Box, Flex, Input, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 import Main from "../components/Main";
 
@@ -8,7 +8,7 @@ const DashBoard = () => {
   return (
     <DashboardLayout>
       <Flex>
-        <Flex justifyContent={"center"} alignItems={"center"}>
+        <Flex pl={"20px"} justifyContent={"center"} alignItems={"center"}>
           <Main />
         </Flex>
       </Flex>
