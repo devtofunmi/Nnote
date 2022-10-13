@@ -1,29 +1,43 @@
-import { Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import { Button, Flex, Text } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 const SideBar = () => {
-  return (
-    <Flex
-      flexDirection={"column"}
-      bg={"#181819"}
-      w={"100%"}
-      minH={"100vh"}
-      px={4}
-      pt={"30px"}
-    >
-      <Text fontSize={"30px"}>Nnote</Text>
+  const { width } = useWindowDimensions();
 
-      <Link to={"/dashboard"} mt={"20px"}>
-        <Text my={2}>Overview</Text>
-      </Link>
-      <Link to={"/task"} mt={"20px"}>
-        <Text my={2}>Task</Text>
-      </Link>
-      <Link to={"/dashboard/favorite"}>
-        <Text my={2}>Favourite</Text>
-      </Link>
-    </Flex>
+  useEffect(() => {
+    console.log(width);
+  }, []);
+  return (
+    <>
+      {width > 480 ? (
+        <Flex
+          flexDirection={"column"}
+          bg={"#181819"}
+          w={"100%"}
+          minH={"100vh"}
+          px={4}
+          pt={"30px"}
+        >
+          <Text fontSize={"30px"}>Nnote</Text>
+
+          <Link to={"/dashboard"} mt={"20px"}>
+            <Text my={2}>Overview</Text>
+          </Link>
+          <Link to={"/task"} mt={"20px"}>
+            <Text my={2}>Task</Text>
+          </Link>
+          <Link to={"/dashboard/favorite"}>
+            <Text my={2}>Favourite</Text>
+          </Link>
+        </Flex>
+      ) : (
+        <>
+          <Button>Op</Button>
+        </>
+      )}
+    </>
   );
 };
 
