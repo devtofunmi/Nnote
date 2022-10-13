@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, Img, Text } from "@chakra-ui/react";
 import React from "react";
 import note from "../assets/note.png";
 import FeaturesCard from "../components/FeaturesCard";
-
+import { SiGoogle } from "react-icons/si";
 const LandingPage = () => {
   return (
     <>
@@ -13,19 +13,26 @@ const LandingPage = () => {
         flexDirection={["column-reverse", "row"]}
       >
         <Box w={["100%", "60%"]} mt={"70px"}>
-          <Text fontSize={["40px", "50px"]} fontWeight={"bold"} color={"white"}>
-            BRING <Text color={"#fab004"}>iDEAS </Text> TO lIFE ~~
+          <Text
+            fontSize={["40px", "90px"]}
+            fontWeight={"bold"}
+            color={"white"}
+            lineHeight={"100px"}
+          >
+            BRING <Text color={"#fab004"}>iDEAS </Text> TO lIFE
           </Text>
-          <Text color={"#afb1b3"}>
+          <Text fontSize={"20px"} color={"#afb1b3"} maxW={"500px"}>
             Notes is the best place to jot down quick thoughts or to save longer
             notes filled with checklists.
           </Text>
           <Flex gap={"10px"} mt={"30px"}>
-            <Button bg={"black"} color={"white"} colorScheme="teal">
+            <Button
+              bg={"black"}
+              color={"white"}
+              colorScheme="teal"
+              leftIcon={<SiGoogle />}
+            >
               LogIn with Google
-            </Button>
-            <Button bg={"black"} colorScheme="teal" color={"white"}>
-              SignUp with Google
             </Button>
           </Flex>
         </Box>
@@ -37,13 +44,15 @@ const LandingPage = () => {
       <Flex flexDirection={"column"} textAlign={"center"}>
         <Text
           fontWeight={500}
-          fontSize={["25px", "30px"]}
+          fontSize={["25px", "40px"]}
           mt={"10px"}
           color={"white"}
         >
           Focus on what matters most
         </Text>
-        <Text color={"#afb1b3"}>Some of Nnote key features</Text>
+        <Text fontSize={"20px"} color={"#afb1b3"}>
+          Some of Nnote key features
+        </Text>
       </Flex>
       <Flex
         justifyContent={"center"}
@@ -56,24 +65,34 @@ const LandingPage = () => {
         {FeaturesCard.map((card, i) => (
           <Flex
             px={["70px", "40px", "20px", "130px"]}
-            py={"50px"}
+            py={"20px"}
             justifyContent={"space-between"}
             key={i}
-            direction={["column", "row"]}
+            alignItems={"center"}
+            direction={["column", card.isInverted ? "row-reverse" : "row"]}
           >
             <Flex
               fontSize={"50px"}
               justifyContent={"center"}
               color={"white"}
-              w={["100%", "40%"]}
+              w={["100%", "50%"]}
             >
               {card.image}
             </Flex>
-            <Box mt={"30px"}>
-              <Text fontWeight={500} fontSize={"18px"} color={"white"}>
+            <Box w={["100%", "50%"]}>
+              <Text
+                fontWeight={500}
+                fontSize={["25px", "65px"]}
+                color={"white"}
+                lineHeight={"60px"}
+                my={10}
+                textAlign={"left"}
+              >
                 {card.heading}
               </Text>
-              <Text color={"#afb1b3"}>{card.text}</Text>
+              <Text fontSize={"20px"} color={"#afb1b3"} textAlign={"left"}>
+                {card.text}
+              </Text>
             </Box>
           </Flex>
         ))}
