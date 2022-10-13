@@ -63,7 +63,7 @@ const AddNote = ({ isOpen, closePopup }) => {
             </Button>
           </Flex>
           <Box w={["300px", "400px"]} mt={"50px"}>
-            <Input placeholder="Title" />
+            <Input w={["300px", "400px"]} placeholder="Title" />
             <Textarea mt={"15px"} placeholder="Enter note" h={"150px"} />
             <Button mt={"20px"}>Submit</Button>
           </Box>
