@@ -19,7 +19,9 @@ const NoteCard = () => {
           </Text>
         </Box>
         <Button>
-          <MdBookmarkAdd fontSize={["50px", "100px"]} color={"white"} />
+          <Text fontSize={"2xl"}>
+            <MdBookmarkAdd />
+          </Text>
         </Button>
       </Flex>
     </Box>
