@@ -62,7 +62,7 @@ const AddNote = ({ isOpen, closePopup }) => {
               <MdOutlineClose />
             </Button>
           </Flex>
-          <Box w={"400px"} mt={"50px"}>
+          <Box w={["300px", "400px"]} mt={"50px"}>
             <Input placeholder="Title" />
             <Textarea mt={"15px"} placeholder="Enter note" h={"150px"} />
             <Button mt={"20px"}>Submit</Button>
