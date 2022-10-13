@@ -14,6 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 import AddNewNote from "./AddNew";
+import { BsMenuButton } from "react-icons/bs";
 
 const SideBar = () => {
   const { width } = useWindowDimensions();
@@ -49,7 +50,7 @@ const SideBar = () => {
       ) : (
         <>
           <Button colorScheme="blue" onClick={onOpen}>
-            Open
+            <BsMenuButton />
           </Button>
           <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
