@@ -55,14 +55,14 @@ const SideBar = () => {
           <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent>
-              <DrawerBody>
+              <DrawerBody p={0}>
                 <Flex
+                  pl={7}
+                  pt={5}
                   flexDirection={"column"}
                   bg={"#181819"}
                   w={"100%"}
                   minH={"100vh"}
-                  px={4}
-                  pt={"30px"}
                 >
                   <Text fontSize={"30px"}>Nnote</Text>
 
