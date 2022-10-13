@@ -31,6 +31,9 @@ const LandingPage = () => {
               color={"white"}
               colorScheme="teal"
               leftIcon={<SiGoogle />}
+              _hover={{
+                color: "#4cbf87",
+              }}
             >
               LogIn with Google
             </Button>
