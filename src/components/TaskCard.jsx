@@ -1,6 +1,6 @@
 import { Box, Checkbox, Flex, Text } from "@chakra-ui/react";
-import React from "react";
-
+import React, { useState } from "react";
+const [done, setDone] = useState("");
 const TaskCard = () => {
   return (
     <>
@@ -12,9 +12,14 @@ const TaskCard = () => {
           textAlign={"center"}
           cursor={"pointer"}
         >
-          <Checkbox />
+          <Checkbox
+            onClick={(e) => {
+              setDone(e.target.value);
+            }}
+          />
           <Text>Create the term sheet</Text>
         </Flex>
+        <Box>{done ? "done" : "notdone"}</Box>
       </Box>
     </>
   );
