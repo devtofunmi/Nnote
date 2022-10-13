@@ -1,8 +1,8 @@
 import { Img } from "@chakra-ui/react";
-import one from "../assets/one.jpg";
-import two from "../assets/two.jpg";
-import three from "../assets/three.jpg";
-import four from "../assets/four.jpg";
+import one from "../assets/one.png";
+import two from "../assets/two.png";
+import three from "../assets/three.png";
+import four from "../assets/four.png";
 
 const FeaturesCard = [
   {
