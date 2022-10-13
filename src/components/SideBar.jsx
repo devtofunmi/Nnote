@@ -49,7 +49,7 @@ const SideBar = () => {
         </Flex>
       ) : (
         <>
-          <Button colorScheme="blue" onClick={onOpen}>
+          <Button bg={"#202225"} color={"white"} onClick={onOpen}>
             <BsMenuButton />
           </Button>
           <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
