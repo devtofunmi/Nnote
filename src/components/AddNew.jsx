@@ -4,13 +4,9 @@ import {
   Popover,
   PopoverArrow,
   PopoverBody,
-  PopoverCloseButton,
   PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
   PopoverTrigger,
   Portal,
-  Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { MdOutlineEditNote } from "react-icons/md";
