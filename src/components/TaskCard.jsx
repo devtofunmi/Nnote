@@ -1,6 +1,6 @@
 import { Box, Checkbox, Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
-const [done, setDone] = useState("");
+import { makeUseVisualState } from "framer-motion";
+import React from "react";
 const TaskCard = () => {
   return (
     <>

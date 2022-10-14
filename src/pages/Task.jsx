@@ -1,9 +1,11 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import React from "react";
-import TaskCard from "../components/TaskCard";
+import { Box, Flex, Text, Checkbox } from "@chakra-ui/react";
+import React, { useState } from "react";
+// import TaskCard from "../components/TaskCard";
 import DashboardLayout from "../layout/DashboardLayout";
 
 const Task = () => {
+  const [done, setDone] = useState([]);
+
   return (
     <>
       <DashboardLayout>
@@ -16,17 +18,25 @@ const Task = () => {
             <Box>
               <Text>Task</Text>
 
-              <TaskCard />
-              <TaskCard />
-              <TaskCard />
-              <TaskCard />
-              <TaskCard />
+              <Flex
+                gap={"10px"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                textAlign={"center"}
+                cursor={"pointer"}
+              >
+                <Checkbox
+                  onClick={(e) => {
+                    setDone(e.target.value);
+                  }}
+                />
+                <Text>Create the term sheet</Text>
+              </Flex>
+
+              <Box>{done(console.log("done"))}</Box>
             </Box>
             <Box mt={"50px"}>
               <Text>Complete</Text>
-              <TaskCard />
-              <TaskCard />
-              <TaskCard />
             </Box>
           </Flex>
         </Flex>
