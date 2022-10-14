@@ -1,5 +1,5 @@
 import { Box, Checkbox, Flex, Text } from "@chakra-ui/react";
-import { makeUseVisualState } from "framer-motion";
+
 import React from "react";
 const TaskCard = () => {
   return (
@@ -19,7 +19,6 @@ const TaskCard = () => {
           />
           <Text>Create the term sheet</Text>
         </Flex>
-        <Box>{done ? "done" : "notdone"}</Box>
       </Box>
     </>
   );
