@@ -1,7 +1,5 @@
 import { Box, Flex, Text, Checkbox } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { MdSettingsBackupRestore } from "react-icons/md";
-// import TaskCard from "../components/TaskCard";
 import DashboardLayout from "../layout/DashboardLayout";
 
 const Task = () => {
@@ -78,7 +76,7 @@ const Task = () => {
                         complete(t.id);
                       }}
                     />
-                    <Text>{t.title}</Text>
+                    <Text textDecoration={"line-through"}>{t.title}</Text>
                   </Flex>
                 ))}
             </Box>
