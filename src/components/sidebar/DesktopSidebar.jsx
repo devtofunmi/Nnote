@@ -15,7 +15,7 @@ const DesktopSidebar = () => {
       <Text fontSize={"30px"}>Nnote</Text>
 
       <Link to={"/dashboard"} mt={"20px"}>
-        <Text my={2}>Overview</Text>
+        <Text my={2}>Note</Text>
       </Link>
       <Link to={"/task"} mt={"20px"}>
         <Text my={2}>Task</Text>
