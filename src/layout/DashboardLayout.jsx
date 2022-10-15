@@ -11,7 +11,9 @@ const DashboardLayout = ({ children }) => {
       </Box>
       <Box w={["100%", "85%"]}>
         <Topbar />
-        <Flex bg={"#202225"}>{children}</Flex>
+        <Flex bg={"#202225"} minH={"100vh"}>
+          {children}
+        </Flex>
       </Box>
     </Flex>
   );
