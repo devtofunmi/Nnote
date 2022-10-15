@@ -50,18 +50,19 @@ const Task = () => {
   return (
     <>
       <DashboardLayout>
-        <Flex>
+        <Flex pl={"20px"}>
           <AddTask isOpen={showAddNewTaskPopup} closePopup={closePopup} />
 
           <Flex direction={"column"}>
             <Button
+              mt={"20px"}
               bg={"#176fe4"}
               onClick={() => setShowAddNewTaskPopup(true)}
               w={"150px"}
             >
               Add New Task
             </Button>
-            <Box>
+            <Box mt={"20px"}>
               <Text>Tasks</Text>
               {tasks
                 .filter((task) => !task.complete)
