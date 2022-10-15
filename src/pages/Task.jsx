@@ -1,8 +1,15 @@
-import { Box, Flex, Text, Checkbox } from "@chakra-ui/react";
+import { Box, Flex, Text, Checkbox, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 import DashboardLayout from "../layout/DashboardLayout";
+// import AddTask from "./AddTask";
+import AddTask from "../components/AddTask";
 
 const Task = () => {
+  const [showAddNewTaskPopup, setShowAddNewTaskPopup] = useState(false);
+  const closePopup = () => {
+    setShowAddNewTaskPopup(false);
+  };
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -44,7 +51,16 @@ const Task = () => {
     <>
       <DashboardLayout>
         <Flex>
+          <AddTask isOpen={showAddNewTaskPopup} closePopup={closePopup} />
+
           <Flex direction={"column"}>
+            <Button
+              bg={"#176fe4"}
+              onClick={() => setShowAddNewTaskPopup(true)}
+              w={"150px"}
+            >
+              Add New Task
+            </Button>
             <Box>
               <Text>Tasks</Text>
               {tasks
