@@ -37,14 +37,14 @@ const MobileDrawer = () => {
             >
               <Text fontSize={"30px"}>Nnote</Text>
 
-              {width < 480 && (
+              {/* {width < 480 && (
                 <Box>
                   <AddNewNote />
                 </Box>
-              )}
+              )} */}
 
               <Link to={"/dashboard"} mt={"20px"}>
-                <Text my={2}>Overview</Text>
+                <Text my={2}>Note</Text>
               </Link>
               <Link to={"/task"} mt={"20px"}>
                 <Text my={2}>Task</Text>
