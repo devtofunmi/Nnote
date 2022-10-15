@@ -15,11 +15,11 @@ const Topbar = () => {
           color: "#afb1b3",
         }}
       />
-      {width > 480 && (
+      {/* {width > 480 && (
         <Box>
           <AddNewNote />
         </Box>
-      )}
+      )} */}
       <Flex
         align={"center"}
         gap={3}
