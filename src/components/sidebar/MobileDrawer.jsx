@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../../hooks/useWindowsDimensions";
-import AddNewNote from "../addNew/AddNew";
 import { BsMenuButton } from "react-icons/bs";
 import {
   Button,
