@@ -2,17 +2,9 @@ import { Box, Button, Input, Textarea, Text, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
-const AddNote = ({ isOpen, closePopup }) => {
-  const [note, setNote] = useState("");
+const AddNote = ({ isOpen, closePopup, addNewNote }) => {
   const [title, setTitle] = useState("");
-
-  function submit() {
-    const notes = {
-      note,
-      title,
-    };
-    console.log("added");
-  }
+  const [content, setContent] = useState("");
   return (
     <>
       <Box
@@ -60,10 +52,15 @@ const AddNote = ({ isOpen, closePopup }) => {
               placeholder="Enter note"
               h={"150px"}
               onChange={(e) => {
-                setNote(e.target.value);
+                setContent(e.target.value);
               }}
             />
-            <Button mt={"20px"} onClick={submit}>
+            <Button
+              mt={"20px"}
+              onClick={() => {
+                addNewNote(title, content, new Date());
+              }}
+            >
               Submit
             </Button>
           </Box>
