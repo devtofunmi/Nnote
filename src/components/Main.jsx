@@ -62,7 +62,7 @@ const Main = () => {
         addNewNote={addNewNote}
       />
       <Flex direction={"column"} justifyContent={"center"}>
-        <Text fontSize={"20px"} fontWeight={"bold"} mt={"30px"}>
+        <Text fontSize={"20px"} fontWeight={"bold"}>
           My Notes
         </Text>
         <Button
