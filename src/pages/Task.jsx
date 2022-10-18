@@ -2,6 +2,7 @@ import { Box, Flex, Text, Checkbox, Button, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import DashboardLayout from "../layout/DashboardLayout";
 import AddTask from "../components/AddTask";
+import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 
 const Task = () => {
   const [showAddNewTaskPopup, setShowAddNewTaskPopup] = useState(false);
@@ -81,9 +82,9 @@ const Task = () => {
                 .filter((task) => !task.complete)
                 .map((t) => (
                   <Box key={t.id}>
-                    <Flex>
-                      <Checkbox
-                        onChange={() => {
+                    <Flex alignItems={"center"} gap={"5px"}>
+                      <BsCheckCircle
+                        onClick={() => {
                           complete(t.id);
                         }}
                       />
@@ -99,10 +100,10 @@ const Task = () => {
               {tasks
                 .filter((task) => task.complete)
                 .map((t) => (
-                  <Flex key={t.id}>
-                    <Checkbox
+                  <Flex gap={"5px"} alignItems={"center"} key={t.id}>
+                    <BsCheckCircleFill
                       checked={t.complete}
-                      onChange={() => {
+                      onClick={() => {
                         complete(t.id);
                       }}
                     />
