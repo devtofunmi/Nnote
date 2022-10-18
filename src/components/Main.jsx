@@ -83,8 +83,9 @@ const Main = () => {
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {newNote.map((note) => (
+                {newNote.map((note, id) => (
                   <Box
+                    key={id}
                     width={["90%", "45%", "25%"]}
                     bg={"#181819"}
                     p={"17px"}
