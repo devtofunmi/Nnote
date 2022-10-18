@@ -1,7 +1,6 @@
 import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
-// import AddNewNote from "./addNew/AddNew";
 
 const Topbar = () => {
   const { width } = useWindowDimensions();
