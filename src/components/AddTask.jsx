@@ -1,8 +1,18 @@
 import { Box, Button, Flex, Input } from "@chakra-ui/react";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
-const AddTask = ({ isOpen, closePopup }) => {
+const AddTask = ({ isOpen, closePopup, addNewTask }) => {
+  const [task, setTask] = useState("");
+  const inputRef = useRef();
+
+  const handleSubmit = () => {
+    if (addNewTask(task)) {
+      setTask("");
+      inputRef.current.value = "";
+    }
+  };
+
   return (
     <>
       <>
@@ -43,9 +53,23 @@ const AddTask = ({ isOpen, closePopup }) => {
               </Button>
             </Flex>
             <Box w={["300px", "400px"]} mt={"50px"}>
-              <Input placeholder="Task" />
+              <Input
+                placeholder="Task"
+                onChange={(e) => {
+                  setTask(e.target.value);
+                }}
+                ref={inputRef}
+              />
 
-              <Button mt={"20px"}>Submit</Button>
+              <Button
+                mt={"20px"}
+                onClick={() => {
+                  handleSubmit();
+                }}
+                disabled={!task}
+              >
+                Submit
+              </Button>
             </Box>
           </Flex>
         </Box>
