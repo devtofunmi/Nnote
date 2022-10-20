@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Img, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Img, Text } from "@chakra-ui/react";
 import React from "react";
 import note from "../assets/note.png";
 import FeaturesCard from "../components/FeaturesCard";
@@ -45,6 +45,13 @@ const LandingPage = () => {
       </Flex>
 
       <Flex flexDirection={"column"} textAlign={"center"}>
+        <Center>
+          <Img
+            w={"200px"}
+            src="https://media.giphy.com/media/Vo6eOQJMg3n6HgDuAA/giphy.gif"
+          />
+        </Center>
+
         <Text
           fontWeight={500}
           fontSize={["25px", "40px"]}
