@@ -44,7 +44,15 @@ const AddNote = ({ isOpen, closePopup, addNewNote }) => {
         >
           <Flex align={"center"} justify={"space-between"} w={"100%"}>
             <Text fontSize={"1.5rem"}>Add New Note</Text>
-            <Button size={"sm"} cursor={"pointer"} onClick={() => closePopup()}>
+            <Button
+              bg={"blue.400"}
+              _hover={{
+                backgroundColor: "rgba(#181819, 0.2)",
+              }}
+              size={"sm"}
+              cursor={"pointer"}
+              onClick={() => closePopup()}
+            >
               <MdOutlineClose />
             </Button>
           </Flex>
@@ -68,6 +76,10 @@ const AddNote = ({ isOpen, closePopup, addNewNote }) => {
             />
             <Button
               mt={"20px"}
+              bg={"blue.400"}
+              _hover={{
+                backgroundColor: "rgba(#181819, 0.2)",
+              }}
               onClick={() => {
                 handleSubmit();
 
