@@ -16,6 +16,7 @@ import AddNote from "../components/AddNote";
 import NoteCard from "./NoteCard";
 import { MdBookmarkAdd } from "react-icons/md";
 import DashboardLayout from "../layout/DashboardLayout";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -54,6 +55,12 @@ const Main = () => {
     console.log(note);
     setNewNote([...newNote, note]);
   };
+
+  function truncateString(str) {
+    if (str.length <= 15) {
+      return str;
+    } else return str.slice(0, 15) + "...";
+  }
 
   return (
     <DashboardLayout>
@@ -94,9 +101,13 @@ const Main = () => {
                   >
                     <Flex>
                       <Box w={"80%"}>
-                        <Text fontSize={["15px", "20px"]}>{note.title}</Text>
+                        <Text fontSize={["15px", "20px"]}>
+                          {truncateString(note.title)}
+                        </Text>
                         <Text mt={5} fontSize={["10px", "15px"]}>
-                          {note.content}
+                          <Link to={`/${note.id}`}>
+                            {truncateString(note.content)}
+                          </Link>
                         </Text>
                       </Box>
                       <Button
