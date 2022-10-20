@@ -45,6 +45,10 @@ const AddTask = ({ isOpen, closePopup, addNewTask }) => {
             <Flex align={"center"} justify={"space-between"} w={"100%"}>
               <Box fontSize={"1.5rem"}>Add New Task</Box>
               <Button
+                bg={"blue.400"}
+                _hover={{
+                  backgroundColor: "rgba(#181819, 0.2)",
+                }}
                 size={"sm"}
                 cursor={"pointer"}
                 onClick={() => closePopup()}
@@ -63,6 +67,10 @@ const AddTask = ({ isOpen, closePopup, addNewTask }) => {
 
               <Button
                 mt={"20px"}
+                bg={"blue.400"}
+                _hover={{
+                  backgroundColor: "rgba(#181819, 0.2)",
+                }}
                 onClick={() => {
                   handleSubmit();
                 }}
