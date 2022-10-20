@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import Favorite from "./pages/Favorite";
 import Task from "./pages/Task";
+import Main from "./components/Main";
 function App() {
   return (
     <>
@@ -12,7 +13,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/dashboard/main" element={<Main />} />
             <Route path="/task" element={<Task />} />
             <Route path="/dashboard/favorite" element={<Favorite />} />
           </Routes>
