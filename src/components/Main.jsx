@@ -15,6 +15,7 @@ import {
 import AddNote from "../components/AddNote";
 import NoteCard from "./NoteCard";
 import { MdBookmarkAdd } from "react-icons/md";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -55,7 +56,7 @@ const Main = () => {
   };
 
   return (
-    <>
+    <DashboardLayout>
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
@@ -86,7 +87,7 @@ const Main = () => {
                 {newNote.map((note, id) => (
                   <Box
                     key={id}
-                    width={["90%", "45%", "25%"]}
+                    width={"300px"}
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
@@ -98,7 +99,12 @@ const Main = () => {
                           {note.content}
                         </Text>
                       </Box>
-                      <Button>
+                      <Button
+                        bg={"blue.400"}
+                        _hover={{
+                          backgroundColor: "rgba(#181819, 0.2)",
+                        }}
+                      >
                         <Text fontSize={"2xl"}>
                           <MdBookmarkAdd />
                         </Text>
@@ -122,7 +128,7 @@ const Main = () => {
           </TabPanels>
         </Tabs>
       </Flex>
-    </>
+    </DashboardLayout>
   );
 };
 
