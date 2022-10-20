@@ -6,10 +6,10 @@ import Topbar from "../components/Topbar";
 const DashboardLayout = ({ children }) => {
   return (
     <Flex color={"white"}>
-      <Box w={["fit-content", "25%", "15%"]}>
+      <Box w="20%">
         <SideBar />
       </Box>
-      <Box w={["100%", "85%"]}>
+      <Box w={"100%"}>
         <Topbar />
         <Flex bg={"#202225"} minH={"100vh"}>
           {children}
