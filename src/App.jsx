@@ -5,7 +5,6 @@ import { Box } from "@chakra-ui/react";
 import Favorite from "./pages/Favorite";
 import Task from "./pages/Task";
 import Main from "./components/Main";
-import Note from "./pages/Note";
 function App() {
   return (
     <>
@@ -16,7 +15,6 @@ function App() {
             <Route path="/dashboard/main" element={<Main />} />
             <Route path="/task" element={<Task />} />
             <Route path="/dashboard/favorite" element={<Favorite />} />
-            
           </Routes>
         </Router>
       </Box>
