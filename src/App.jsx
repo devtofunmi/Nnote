@@ -16,7 +16,7 @@ function App() {
             <Route path="/dashboard/main" element={<Main />} />
             <Route path="/task" element={<Task />} />
             <Route path="/dashboard/favorite" element={<Favorite />} />
-            <Route path="/:note" element={<Note />} />
+            
           </Routes>
         </Router>
       </Box>
