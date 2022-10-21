@@ -68,7 +68,7 @@ const Main = () => {
         closePopup={closePopup}
         addNewNote={addNewNote}
       />
-      <Flex direction={"column"} justifyContent={"center"}>
+      <Flex direction={"column"} p={"40px"}>
         <Text fontSize={"20px"} fontWeight={"bold"}>
           My Notes
         </Text>
