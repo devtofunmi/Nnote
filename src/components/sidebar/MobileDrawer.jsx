@@ -33,14 +33,9 @@ const MobileDrawer = () => {
               bg={"#181819"}
               w={"100%"}
               minH={"100vh"}
+              color={"white"}
             >
               <Text fontSize={"30px"}>Nnote</Text>
-
-              {/* {width < 480 && (
-                <Box>
-                  <AddNewNote />
-                </Box>
-              )} */}
 
               <Link to={"/dashboard"} mt={"20px"}>
                 <Text my={2}>Note</Text>
