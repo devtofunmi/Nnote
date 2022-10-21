@@ -99,7 +99,7 @@ const Main = () => {
                     borderRadius={"10px"}
                   >
                     <Flex>
-                      <Box w={"80%"}>
+                      <Box w={"80%"} h={"150px"}>
                         <Text fontSize={["15px", "20px"]}>
                           {truncateString(note.title)}
                         </Text>
