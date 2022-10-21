@@ -16,7 +16,6 @@ import AddNote from "../components/AddNote";
 import NoteCard from "./NoteCard";
 import { MdBookmarkAdd } from "react-icons/md";
 import DashboardLayout from "../layout/DashboardLayout";
-import { Link } from "react-router-dom";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -105,9 +104,11 @@ const Main = () => {
                           {truncateString(note.title)}
                         </Text>
                         <Text mt={5} fontSize={["10px", "15px"]}>
-                          <Link to={`/${note.id}`}>
-                            {truncateString(note.content)}
-                          </Link>
+                          {/* <Link to={`/${note.id}`}>
+                            <img src={d.image} />
+                            <p>{d.name}</p>
+                          </Link> */}
+                          {truncateString(note.content)}
                         </Text>
                       </Box>
                       <Button
