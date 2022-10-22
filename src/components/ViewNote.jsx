@@ -2,7 +2,7 @@ import { Box, Button, Text, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
-const ViewNote = () => {
+const ViewNote = ({ isOpen, title, content, handlePopup }) => {
   return (
     <>
       <Box
@@ -40,14 +40,16 @@ const ViewNote = () => {
               }}
               size={"sm"}
               cursor={"pointer"}
-              onClick={() => closePopup()}
+              onClick={() => {
+                handlePopup();
+              }}
             >
               <MdOutlineClose />
             </Button>
           </Flex>
           <Box w={["300px", "400px"]} mt={"50px"}>
-            <Text>{tile}</Text>
-            <Text>{content}</Text>
+            <Box>{title}</Box>
+            <Box>{content}</Box>
           </Box>
         </Flex>
       </Box>
