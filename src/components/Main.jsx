@@ -16,6 +16,7 @@ import AddNote from "../components/AddNote";
 import NoteCard from "./NoteCard";
 import { MdBookmarkAdd } from "react-icons/md";
 import DashboardLayout from "../layout/DashboardLayout";
+import ViewNote from "./ViewNote";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -24,6 +25,12 @@ const Main = () => {
   };
   const [newNote, setNewNote] = useState([]);
   const toast = useToast();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handlePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   const showError = (message) => {
     toast({
       description: message,
@@ -51,7 +58,6 @@ const Main = () => {
       content,
       date,
     };
-    console.log(note);
     setNewNote([...newNote, note]);
   };
 
@@ -63,6 +69,7 @@ const Main = () => {
 
   return (
     <DashboardLayout>
+      <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
@@ -97,6 +104,7 @@ const Main = () => {
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
+                    onClick={handlePopup}
                   >
                     <Flex>
                       <Box w={"80%"} h={"150px"}>
@@ -104,10 +112,6 @@ const Main = () => {
                           {truncateString(note.title)}
                         </Text>
                         <Text mt={5} fontSize={["10px", "15px"]}>
-                          {/* <Link to={`/${note.id}`}>
-                            <img src={d.image} />
-                            <p>{d.name}</p>
-                          </Link> */}
                           {truncateString(note.content)}
                         </Text>
                       </Box>
@@ -129,12 +133,12 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {newNote
+                {/* {newNote
                   .filter(
                     (note) =>
                       new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000)
                   )
-                  .map()}
+                  .map()} */}
               </Flex>
             </TabPanel>
             <TabPanel>
