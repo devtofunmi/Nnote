@@ -129,7 +129,12 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                <NoteCard />
+                {newNote
+                  .filter(
+                    (note) =>
+                      new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000)
+                  )
+                  .map()}
               </Flex>
             </TabPanel>
             <TabPanel>
