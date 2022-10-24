@@ -2,9 +2,10 @@ import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
-const Topbar = () => {
+const Topbar = (filterNotes) => {
   const { width } = useWindowDimensions();
   const [searchBar, setSearchBar] = useState("");
+
   const filterNotes = () => {
     if (!searchBar) {
       return notes;
@@ -14,6 +15,7 @@ const Topbar = () => {
       });
     }
   };
+
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
       <Input
