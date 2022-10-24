@@ -263,6 +263,11 @@ const Main = () => {
     console.log(note);
   };
 
+  const todaysNotes = () => {
+    const dayStart = new Date();
+    console.log(dayStart);
+  };
+
   function truncateString(str) {
     if (str.length <= 15) {
       return str;
@@ -272,6 +277,7 @@ const Main = () => {
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
+      <Button onClick={todaysNotes}>Checkkkkk</Button>
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
@@ -335,12 +341,37 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {/* {newNote
-                  .filter(
-                    (note) =>
-                      new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000)
-                  )
-                  .map()} */}
+                {notes.map((note, id) => {
+                  <Box
+                    key={id}
+                    width={"300px"}
+                    bg={"#181819"}
+                    p={"17px"}
+                    borderRadius={"10px"}
+                    onClick={handlePopup}
+                  >
+                    <Flex>
+                      <Box w={"80%"} h={"150px"}>
+                        <Text fontSize={["15px", "20px"]}>
+                          {truncateString(note.title)}
+                        </Text>
+                        <Text mt={5} fontSize={["10px", "15px"]}>
+                          {truncateString(note.content)}
+                        </Text>
+                      </Box>
+                      <Button
+                        bg={"blue.400"}
+                        _hover={{
+                          backgroundColor: "rgba(#181819, 0.2)",
+                        }}
+                      >
+                        <Text fontSize={"2xl"}>
+                          <MdBookmarkAdd />
+                        </Text>
+                      </Button>
+                    </Flex>
+                  </Box>;
+                })}
               </Flex>
             </TabPanel>
             <TabPanel>
