@@ -5,6 +5,15 @@ import useWindowDimensions from "../hooks/useWindowsDimensions";
 const Topbar = () => {
   const { width } = useWindowDimensions();
   const [searchBar, setSearchBar] = useState("");
+  const filterNotes = () => {
+    if (!searchBar) {
+      return notes;
+    } else {
+      return notes.filter((note) => {
+        note.title.toLowerCase().startsWith(searchBar);
+      });
+    }
+  };
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
       <Input
