@@ -19,7 +19,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import ViewNote from "./ViewNote";
 import Topbar from "./Topbar";
 
-const Main = () => {
+const Main = ({ filterNotes }) => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
   const closePopup = () => {
     setShowAddNewNotePopup(false);
