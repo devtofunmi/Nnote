@@ -17,6 +17,7 @@ import NoteCard from "./NoteCard";
 import { MdBookmarkAdd } from "react-icons/md";
 import DashboardLayout from "../layout/DashboardLayout";
 import ViewNote from "./ViewNote";
+import Topbar from "./Topbar";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -305,7 +306,7 @@ const Main = () => {
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {notes.map((note, id) => (
+                {filterNotes.map((note, id) => (
                   <Box
                     key={id}
                     width={"300px"}
