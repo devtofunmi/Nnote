@@ -2,11 +2,11 @@ import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
-const Topbar = (filterNotes) => {
+const Topbar = () => {
   const { width } = useWindowDimensions();
   const [searchBar, setSearchBar] = useState("");
 
-  const filterNotes = () => {
+  const filterNotes = ({ filterNotes = { filterNotes } }) => {
     if (!searchBar) {
       return notes;
     } else {
