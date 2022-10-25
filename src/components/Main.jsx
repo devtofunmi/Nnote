@@ -19,7 +19,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import ViewNote from "./ViewNote";
 import Topbar from "./Topbar";
 
-const Main = ({ filterNotes }) => {
+const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
   const closePopup = () => {
     setShowAddNewNotePopup(false);
@@ -275,6 +275,17 @@ const Main = ({ filterNotes }) => {
     } else return str.slice(0, 15) + "...";
   }
 
+  const [searchBar, setSearchBar] = useState("");
+  const filterNotes = () => {
+    if (!searchBar) {
+      return notes;
+    } else {
+      return notes.filter((note) => {
+        note.title.toLowerCase().startsWith(searchBar);
+      });
+    }
+  };
+
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
@@ -306,9 +317,9 @@ const Main = ({ filterNotes }) => {
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {filterNotes.map((note, id) => (
+                {notes.map((note) => (
                   <Box
-                    key={id}
+                    key={note.id}
                     width={"300px"}
                     bg={"#181819"}
                     p={"17px"}
@@ -342,7 +353,7 @@ const Main = ({ filterNotes }) => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {notes.map((note, id) => {
+                {filterNotes().map((note, id) => {
                   <Box
                     key={id}
                     width={"300px"}
