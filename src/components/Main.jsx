@@ -273,7 +273,16 @@ const Main = () => {
   const last24h = () => {
     const dayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const dayEnd = new Date(new Date().setHours(23, 59, 59, 999));
+
     return filterByDate(dayStart, dayEnd);
+  };
+
+  const weekDate = () => {
+    const date = new Date();
+    const weekStart = new Date(date.setDate(date.getDate() - date.getDay()));
+    const weekEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
+    console.log(weekEnd);
+    return filterByDate(weekStart, weekEnd);
   };
 
   function truncateString(str) {
@@ -296,7 +305,7 @@ const Main = () => {
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
-      <Button onClick={last24h}>Checkkkkk</Button>
+      <Button onClick={weekDate}>Checkkkkk</Button>
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
@@ -324,7 +333,7 @@ const Main = () => {
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {last24h().map((note) => (
+                {last24h().map((note, id) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -360,9 +369,9 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {filterNotes().map((note, id) => {
+                {weekDate().map((note, id) => {
                   <Box
-                    key={id}
+                    key={note.id}
                     width={"300px"}
                     bg={"#181819"}
                     p={"17px"}
