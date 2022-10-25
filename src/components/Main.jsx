@@ -266,7 +266,10 @@ const Main = () => {
 
   const filterByDate = (from, to) => {
     return notes.filter((note) => {
-      return new Date(note.date) >= from && new Date(note.date) <= to;
+      return (
+        new Date(note.date).getTime() >= from &&
+        new Date(note.date).getTime() <= to
+      );
     });
   };
 
@@ -274,13 +277,17 @@ const Main = () => {
     const dayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const dayEnd = new Date(new Date().setHours(23, 59, 59, 999));
 
-    return filterByDate(dayStart, dayEnd);
+    return filterByDate(dayStart.getTime(), dayEnd.getTime());
   };
 
   const weekDate = () => {
     const date = new Date();
-    const weekStart = new Date(date.setDate(date.getDate() - date.getDay()));
-    const weekEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
+    const weekStart = new Date(
+      date.setDate(date.getDate() - date.getDay())
+    ).setHours(0, 0, 0, 0);
+    const weekEnd = new Date(
+      date.setDate(date.getDate() - date.getDay() + 6)
+    ).setHours(23, 59, 59, 999);
     console.log(weekEnd);
     return filterByDate(weekStart, weekEnd);
   };
