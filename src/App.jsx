@@ -5,6 +5,8 @@ import { Box } from "@chakra-ui/react";
 import Favorite from "./pages/Favorite";
 import Task from "./pages/Task";
 import Main from "./components/Main";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 function App() {
   return (
     <>
@@ -14,6 +16,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard/main" element={<Main />} />
             <Route path="/task" element={<Task />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/dashboard/favorite" element={<Favorite />} />
           </Routes>
         </Router>
