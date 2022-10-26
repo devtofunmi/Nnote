@@ -26,7 +26,7 @@ const LandingPage = () => {
             Notes is the best place to jot down quick thoughts or to save longer
             notes filled with checklists.
           </Text>
-          <Flex gap={"10px"} mt={"30px"}>
+          <Flex gap={"10px"} mt={"30px"} direction={["column", "row"]}>
             <Button
               bg={"black"}
               color={"white"}
@@ -37,6 +37,17 @@ const LandingPage = () => {
               }}
             >
               LogIn with Email
+            </Button>
+            <Button
+              bg={"black"}
+              color={"white"}
+              colorScheme="teal"
+              leftIcon={<MdOutlineAlternateEmail />}
+              _hover={{
+                color: "#4cbf87",
+              }}
+            >
+              SignUp with Email
             </Button>
           </Flex>
         </Box>
