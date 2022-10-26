@@ -45,7 +45,7 @@ const SignUp = () => {
         showMessage("password not match");
       } else {
         toast({
-          description: "signup successful",
+          description: "sign successful",
           status: "success",
           duration: 1000,
           isClosable: true,
