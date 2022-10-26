@@ -4,6 +4,7 @@ import note from "../assets/note.png";
 import FeaturesCard from "../components/FeaturesCard";
 import { SiGoogle } from "react-icons/si";
 import { MdOutlineAlternateEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <>
@@ -36,7 +37,7 @@ const LandingPage = () => {
                 color: "#4cbf87",
               }}
             >
-              LogIn with Email
+              <Link to="/login">LogIn with Email</Link>
             </Button>
             <Button
               bg={"black"}
@@ -47,7 +48,7 @@ const LandingPage = () => {
                 color: "#4cbf87",
               }}
             >
-              SignUp with Email
+              <Link to="/signup">SignUp with Email</Link>
             </Button>
           </Flex>
         </Box>
