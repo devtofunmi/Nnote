@@ -420,6 +420,37 @@ const Main = () => {
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 <NoteCard />
+                {thisMonth().map((note) => (
+                  <Box
+                    key={note.id}
+                    width={"300px"}
+                    bg={"#181819"}
+                    p={"17px"}
+                    borderRadius={"10px"}
+                    onClick={handlePopup}
+                  >
+                    <Flex>
+                      <Box w={"80%"} h={"150px"}>
+                        <Text fontSize={["15px", "20px"]}>
+                          {truncateString(note.title)}
+                        </Text>
+                        <Text mt={5} fontSize={["10px", "15px"]}>
+                          {truncateString(note.content)}
+                        </Text>
+                      </Box>
+                      <Button
+                        bg={"blue.400"}
+                        _hover={{
+                          backgroundColor: "rgba(#181819, 0.2)",
+                        }}
+                      >
+                        <Text fontSize={"2xl"}>
+                          <MdBookmarkAdd />
+                        </Text>
+                      </Button>
+                    </Flex>
+                  </Box>
+                ))}
               </Flex>
             </TabPanel>
           </TabPanels>
