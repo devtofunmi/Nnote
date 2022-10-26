@@ -419,7 +419,7 @@ const Main = () => {
             </TabPanel>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                <NoteCard />
+                {/* <NoteCard /> */}
                 {thisMonth().map((note) => (
                   <Box
                     key={note.id}
