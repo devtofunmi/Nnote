@@ -3,6 +3,7 @@ import React from "react";
 import note from "../assets/note.png";
 import FeaturesCard from "../components/FeaturesCard";
 import { SiGoogle } from "react-icons/si";
+import { MdOutlineAlternateEmail } from "react-icons/md";
 const LandingPage = () => {
   return (
     <>
@@ -30,12 +31,12 @@ const LandingPage = () => {
               bg={"black"}
               color={"white"}
               colorScheme="teal"
-              leftIcon={<SiGoogle />}
+              leftIcon={<MdOutlineAlternateEmail />}
               _hover={{
                 color: "#4cbf87",
               }}
             >
-              LogIn with Google
+              LogIn with Email
             </Button>
           </Flex>
         </Box>
