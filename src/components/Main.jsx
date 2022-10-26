@@ -266,10 +266,7 @@ const Main = () => {
 
   const filterByDate = (from, to) => {
     return notes.filter((note) => {
-      return (
-        new Date(note.date).getTime() >= from &&
-        new Date(note.date).getTime() <= to
-      );
+      return new Date(note.date) >= from && new Date(note.date) <= to;
     });
   };
 
@@ -277,7 +274,7 @@ const Main = () => {
     const dayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const dayEnd = new Date(new Date().setHours(23, 59, 59, 999));
 
-    return filterByDate(dayStart.getTime(), dayEnd.getTime());
+    return filterByDate(dayStart, dayEnd);
   };
 
   const thisWeek = () => {
@@ -288,7 +285,6 @@ const Main = () => {
     const weekEnd = new Date(
       date.setDate(date.getDate() - date.getDay() + 6)
     ).setHours(23, 59, 59, 999);
-    console.log(weekEnd);
     return filterByDate(weekStart, weekEnd);
   };
 
@@ -312,7 +308,7 @@ const Main = () => {
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
-      <Button onClick={weekDate}>Checkkkkk</Button>
+      <Button onClick={thisWeek}>Checkkkkk</Button>
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
