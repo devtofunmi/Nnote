@@ -261,7 +261,7 @@ const Main = () => {
       date,
     };
     setNotes([...notes, note]);
-    console.log(note);
+    // console.log(note);
   };
 
   const filterByDate = (from, to) => {
@@ -294,7 +294,7 @@ const Main = () => {
     const monthEnd = new Date(
       date.setDate(date.getFullYear(), date.getMonth() + 1, 0)
     );
-    console.log(monthStart);
+    // console.log(monthStart);
 
     return filterByDate(monthStart, monthEnd);
   };
@@ -319,7 +319,7 @@ const Main = () => {
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
-      <Button onClick={thisMonth}>Checkkkkk</Button>
+      {/* <Button onClick={thisMonth}>Checkkkkk</Button> */}
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
@@ -343,11 +343,12 @@ const Main = () => {
             <Tab>Today</Tab>
             <Tab>This week</Tab>
             <Tab>This month</Tab>
+            <Tab>All Notes</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {last24h().map((note, id) => (
+                {last24h().map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -420,6 +421,41 @@ const Main = () => {
               <Flex gap={"20px"} wrap={"wrap"}>
                 <NoteCard />
                 {thisMonth().map((note) => (
+                  <Box
+                    key={note.id}
+                    width={"300px"}
+                    bg={"#181819"}
+                    p={"17px"}
+                    borderRadius={"10px"}
+                    onClick={handlePopup}
+                  >
+                    <Flex>
+                      <Box w={"80%"} h={"150px"}>
+                        <Text fontSize={["15px", "20px"]}>
+                          {truncateString(note.title)}
+                        </Text>
+                        <Text mt={5} fontSize={["10px", "15px"]}>
+                          {truncateString(note.content)}
+                        </Text>
+                      </Box>
+                      <Button
+                        bg={"blue.400"}
+                        _hover={{
+                          backgroundColor: "rgba(#181819, 0.2)",
+                        }}
+                      >
+                        <Text fontSize={"2xl"}>
+                          <MdBookmarkAdd />
+                        </Text>
+                      </Button>
+                    </Flex>
+                  </Box>
+                ))}
+              </Flex>
+            </TabPanel>
+            <TabPanel>
+              <Flex gap={"20px"} wrap={"wrap"}>
+                {notes.map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
