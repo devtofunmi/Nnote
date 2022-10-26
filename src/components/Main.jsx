@@ -290,12 +290,11 @@ const Main = () => {
 
   const thisMonth = () => {
     const date = new Date();
-    const monthStart = new Date(date.setDate(date.getDate() - date.getDay()));
-    const monthEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
-    monthStart.setHours(0, 0, 0, 0);
-    monthEnd.setHours(168, 413, 413, 6993);
-
-    // console.log(filterByDate(weekStart, weekEnd));
+    const monthStart = new Date(date.getFullYear(), date.getMonth(), 1);
+    const monthEnd = new Date(
+      date.setDate(date.getFullYear(), date.getMonth() + 1, 0)
+    );
+    console.log(monthStart);
 
     return filterByDate(monthStart, monthEnd);
   };
@@ -320,7 +319,7 @@ const Main = () => {
   return (
     <DashboardLayout>
       <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
-      <Button onClick={thisWeek}>Checkkkkk</Button>
+      <Button onClick={thisMonth}>Checkkkkk</Button>
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
