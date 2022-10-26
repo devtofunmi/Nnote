@@ -273,18 +273,18 @@ const Main = () => {
   const last24h = () => {
     const dayStart = new Date(new Date().setHours(0, 0, 0, 0));
     const dayEnd = new Date(new Date().setHours(23, 59, 59, 999));
-
     return filterByDate(dayStart, dayEnd);
   };
 
   const thisWeek = () => {
     const date = new Date();
-    const weekStart = new Date(
-      date.setDate(date.getDate() - date.getDay())
-    ).setHours(0, 0, 0, 0);
-    const weekEnd = new Date(
-      date.setDate(date.getDate() - date.getDay() + 6)
-    ).setHours(23, 59, 59, 999);
+    const weekStart = new Date(date.setDate(date.getDate() - date.getDay()));
+    const weekEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
+    weekStart.setHours(0, 0, 0, 0);
+    weekEnd.setHours(168, 413, 413, 6993);
+
+    // console.log(filterByDate(weekStart, weekEnd));
+
     return filterByDate(weekStart, weekEnd);
   };
 
@@ -372,7 +372,7 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {thisWeek().map((note, id) => {
+                {thisWeek().map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -401,8 +401,8 @@ const Main = () => {
                         </Text>
                       </Button>
                     </Flex>
-                  </Box>;
-                })}
+                  </Box>
+                ))}
               </Flex>
             </TabPanel>
             <TabPanel>
