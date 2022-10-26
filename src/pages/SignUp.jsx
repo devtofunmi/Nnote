@@ -16,7 +16,7 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const toast = useToast();
@@ -32,11 +32,11 @@ const SignUp = () => {
     });
   };
 
-  function handleForm() {
+  function handleSubmit() {
     setLoading(true);
     setTimeout(() => {
-      if (!userName) {
-        showMessage("enter username");
+      if (!email) {
+        showMessage("enter email");
       } else if (!password) {
         showMessage("enter password");
       } else if (!confirmPassword) {
@@ -52,86 +52,82 @@ const SignUp = () => {
         });
       }
       setLoading(false);
+      navigate("/login");
     }, 1000);
   }
   return (
     <>
       <Flex justifyContent={"center"}>
-        <Text
-          color="white"
-          fontSize={30}
-          textAlign="center"
-          fontFamily="sans-serif"
-          mt={"50px"}
+        <Flex
+          align-items="center"
+          justify-contents="center"
+          w={["70%", "50%", "30%"]}
+          m="auto"
+          flexDirection="column"
+          p={"10px"}
+          marginTop={"100px"}
         >
-          ChakNote ✍️📝
-        </Text>
-      </Flex>
-      <Flex
-        align-items="center"
-        justify-contents="center"
-        w={["70%", "30%"]}
-        m="auto"
-        flexDirection="column"
-        p={"10px"}
-        marginTop={"100px"}
-      >
-        <Text
-          color="white"
-          fontSize={30}
-          textAlign="center"
-          fontFamily="sans-serif"
-        >
-          SignUp 😚🤗
-        </Text>
-        <Box>
-          <Input
-            my={5}
-            variant="outline"
-            placeholder="username 🤩🥳"
-            onChange={(e) => {
-              setUserName(e.target.value);
-            }}
-          />
-          <InputGroup size="md">
+          <Text
+            color="white"
+            fontSize={30}
+            textAlign="center"
+            fontFamily="sans-serif"
+          >
+            SignUp
+          </Text>
+          <Box>
             <Input
-              pr="4.5rem"
-              type={show ? "text" : "password"}
-              placeholder="Enter password 🤩🥳"
+              my={5}
+              variant="outline"
+              placeholder="Enter Email"
               onChange={(e) => {
-                setPassword(e.target.value);
+                setEmail(e.target.value);
               }}
             />
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                type={show ? "text" : "password"}
+                placeholder="Enter password "
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
 
-            <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-          <Input
-            my={5}
-            pr="4.5rem"
-            type={show ? "text" : "password"}
-            placeholder="Confirm password 🥳😎"
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
-          />
-        </Box>
-        <Button backgroundColor="blue.500" color="white" onClick={handleForm}>
-          {loading ? (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="md"
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <Input
+              my={5}
+              pr="4.5rem"
+              type={show ? "text" : "password"}
+              placeholder="Confirm password"
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
             />
-          ) : (
-            "Signup"
-          )}
-        </Button>
+          </Box>
+          <Button
+            backgroundColor="#4cbf87"
+            color="white"
+            onClick={handleSubmit}
+          >
+            {loading ? (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="md"
+              />
+            ) : (
+              "Signup"
+            )}
+          </Button>
+        </Flex>
       </Flex>
     </>
   );
