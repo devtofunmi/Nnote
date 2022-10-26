@@ -280,7 +280,7 @@ const Main = () => {
     return filterByDate(dayStart.getTime(), dayEnd.getTime());
   };
 
-  const weekDate = () => {
+  const thisWeek = () => {
     const date = new Date();
     const weekStart = new Date(
       date.setDate(date.getDate() - date.getDay())
@@ -376,7 +376,7 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {weekDate().map((note, id) => {
+                {thisWeek().map((note, id) => {
                   <Box
                     key={note.id}
                     width={"300px"}
