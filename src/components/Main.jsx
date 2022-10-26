@@ -288,6 +288,18 @@ const Main = () => {
     return filterByDate(weekStart, weekEnd);
   };
 
+  const thisMonth = () => {
+    const date = new Date();
+    const monthStart = new Date(date.setDate(date.getDate() - date.getDay()));
+    const monthEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
+    monthStart.setHours(0, 0, 0, 0);
+    monthEnd.setHours(168, 413, 413, 6993);
+
+    // console.log(filterByDate(weekStart, weekEnd));
+
+    return filterByDate(monthStart, monthEnd);
+  };
+
   function truncateString(str) {
     if (str.length <= 15) {
       return str;
