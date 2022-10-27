@@ -7,6 +7,7 @@ const Topbar = () => {
 
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
+      <Text>Welcome </Text>
       {/* <Input
         w={["70%", "50%"]}
         bg={"#202225"}
