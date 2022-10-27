@@ -318,7 +318,7 @@ const Main = () => {
 
   return (
     <DashboardLayout>
-      <ViewNote isOpen={isOpen} handlePopup={handlePopup} />
+      <ViewNote isOpen={isOpen} handlePopup={handlePopup} content title />
       {/* <Button onClick={thisMonth}>Checkkkkk</Button> */}
       <AddNote
         isOpen={showAddNewNotePopup}
