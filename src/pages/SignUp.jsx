@@ -23,9 +23,9 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const showMessage = (m) => {
+  const showMessage = (message) => {
     toast({
-      description: m,
+      description: message,
       status: "error",
       duration: 1000,
       isClosable: true,
