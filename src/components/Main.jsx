@@ -311,12 +311,12 @@ const Main = () => {
     } else return str.slice(0, 15) + "...";
   }
 
-  const filterNotes = () => {
+  const filterNotes = (notesArr) => {
     if (!searchQuery) {
-      return notes;
+      return notesArr;
     } else {
       return notes.filter((note) => {
-        note.title.toLowerCase().startsWith(searchQuery);
+        return note.title.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
   };
@@ -369,7 +369,7 @@ const Main = () => {
           <TabPanels>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {last24h().map((note) => (
+                {filterNotes(last24h()).map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -408,7 +408,7 @@ const Main = () => {
 
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {thisWeek().map((note) => (
+                {filterNotes(thisWeek()).map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -444,7 +444,7 @@ const Main = () => {
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {/* <NoteCard /> */}
-                {thisMonth().map((note) => (
+                {filterNotes(thisMonth()).map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
@@ -479,7 +479,7 @@ const Main = () => {
             </TabPanel>
             <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {notes.map((note) => (
+                {filterNotes(notes).map((note) => (
                   <Box
                     key={note.id}
                     width={"300px"}
