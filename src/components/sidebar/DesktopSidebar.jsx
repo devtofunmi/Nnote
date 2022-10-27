@@ -17,7 +17,7 @@ const DesktopSidebar = () => {
       <Link to={"/dashboard/main"} mt={"20px"}>
         <Text my={2}>Note</Text>
       </Link>
-      <Link to={"/task"} mt={"20px"}>
+      <Link to={"/dashboard/task"} mt={"20px"}>
         <Text my={2}>Task</Text>
       </Link>
       <Link to={"/dashboard/favorite"}>
