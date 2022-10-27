@@ -32,7 +32,7 @@ const ViewNote = ({ isOpen, title, content, handlePopup }) => {
           borderRadius={"10px"}
         >
           <Flex align={"center"} justify={"space-between"} w={"100%"}>
-            <Text fontSize={"1.5rem"}>Note</Text>
+            <Text fontSize={"1.5rem"}>{title}</Text>
             <Button
               bg={"blue.400"}
               _hover={{
@@ -40,15 +40,13 @@ const ViewNote = ({ isOpen, title, content, handlePopup }) => {
               }}
               size={"sm"}
               cursor={"pointer"}
-              onClick={() => {
-                handlePopup();
-              }}
+              onClick={handlePopup}
             >
               <MdOutlineClose />
             </Button>
           </Flex>
           <Box w={["300px", "400px"]} mt={"50px"}>
-            <Box>{title}</Box>
+            <Box></Box>
             <Box>{content}</Box>
           </Box>
         </Flex>
