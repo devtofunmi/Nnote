@@ -230,7 +230,7 @@ const Main = () => {
   ]);
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handlePopup = () => {
     setIsOpen(!isOpen);
@@ -311,13 +311,12 @@ const Main = () => {
     } else return str.slice(0, 15) + "...";
   }
 
-  const [searchBar, setSearchBar] = useState("");
   const filterNotes = () => {
-    if (!searchBar) {
+    if (!searchQuery) {
       return notes;
     } else {
       return notes.filter((note) => {
-        note.title.toLowerCase().startsWith(searchBar);
+        note.title.toLowerCase().startsWith(searchQuery);
       });
     }
   };
@@ -345,7 +344,7 @@ const Main = () => {
             color: "#afb1b3",
           }}
           onChange={(e) => {
-            searchBar(e.target.value);
+            setSearchQuery(e.target.value);
           }}
         />
         <Text fontSize={"20px"} fontWeight={"bold"} mt={"20px"}>
