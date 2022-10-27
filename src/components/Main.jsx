@@ -21,6 +21,7 @@ import Topbar from "./Topbar";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
+  const [modalContent, setModalContent] = useState({});
   const closePopup = () => {
     setShowAddNewNotePopup(false);
   };
@@ -233,6 +234,9 @@ const Main = () => {
     setIsOpen(!isOpen);
   };
 
+  const populateModal = (id) => {
+    setModalContent(notes.filter((note) => note.id === id)[0]);
+  };
   const showError = (message) => {
     toast({
       description: message,
@@ -318,7 +322,12 @@ const Main = () => {
 
   return (
     <DashboardLayout>
-      <ViewNote isOpen={isOpen} handlePopup={handlePopup} content title />
+      <ViewNote
+        isOpen={isOpen}
+        handlePopup={handlePopup}
+        title={modalContent.title}
+        content={modalContent.content}
+      />
       {/* <Button onClick={thisMonth}>Checkkkkk</Button> */}
       <AddNote
         isOpen={showAddNewNotePopup}
@@ -355,7 +364,10 @@ const Main = () => {
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
-                    onClick={handlePopup}
+                    onClick={() => {
+                      handlePopup();
+                      populateModal(note.id);
+                    }}
                   >
                     <Flex>
                       <Box w={"80%"} h={"150px"}>
