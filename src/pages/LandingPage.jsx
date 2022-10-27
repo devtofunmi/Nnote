@@ -37,7 +37,7 @@ const LandingPage = () => {
                 color: "#4cbf87",
               }}
             >
-              <Link to="/login">LogIn with Email</Link>
+              <Link to="/login">LogIn</Link>
             </Button>
             <Button
               bg={"black"}
@@ -48,7 +48,7 @@ const LandingPage = () => {
                 color: "#4cbf87",
               }}
             >
-              <Link to="/signup">SignUp with Email</Link>
+              <Link to="/signup">SignUp</Link>
             </Button>
           </Flex>
         </Box>
