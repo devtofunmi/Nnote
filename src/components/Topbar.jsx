@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Input, Text } from "@chakra-ui/react";
+import { Avatar, Flex, Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
