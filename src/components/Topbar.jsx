@@ -2,12 +2,12 @@ import { Avatar, Flex, Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
-const Topbar = ({ searchBar }) => {
+const Topbar = () => {
   const { width } = useWindowDimensions();
 
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
-      <Input
+      {/* <Input
         w={["70%", "50%"]}
         bg={"#202225"}
         placeholder={"Search..."}
@@ -17,7 +17,7 @@ const Topbar = ({ searchBar }) => {
         onChange={(e) => {
           searchBar(e.target.value);
         }}
-      />
+      /> */}
 
       <Flex
         align={"center"}
