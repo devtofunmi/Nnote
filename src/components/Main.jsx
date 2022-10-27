@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Flex,
+  Input,
   Tab,
   TabList,
   TabPanel,
@@ -229,6 +230,7 @@ const Main = () => {
   ]);
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState([]);
 
   const handlePopup = () => {
     setIsOpen(!isOpen);
@@ -328,14 +330,25 @@ const Main = () => {
         title={modalContent.title}
         content={modalContent.content}
       />
-      {/* <Button onClick={thisMonth}>Checkkkkk</Button> */}
+
       <AddNote
         isOpen={showAddNewNotePopup}
         closePopup={closePopup}
         addNewNote={addNewNote}
       />
       <Flex direction={"column"} p={"40px"}>
-        <Text fontSize={"20px"} fontWeight={"bold"}>
+        <Input
+          w={["70%", "50%"]}
+          bg={"#202225"}
+          placeholder={"Search..."}
+          _placeholder={{
+            color: "#afb1b3",
+          }}
+          onChange={(e) => {
+            searchBar(e.target.value);
+          }}
+        />
+        <Text fontSize={"20px"} fontWeight={"bold"} mt={"20px"}>
           My Notes
         </Text>
         <Button
