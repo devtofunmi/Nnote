@@ -11,6 +11,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -31,6 +32,12 @@ const SignUp = () => {
       isClosable: true,
     });
   };
+  const signUP = async () => {
+    let { email, password } = await supabase.auth.signUp({
+      email: "someone@email.com",
+      password: "CZBRYwEHDObtGEkqdxpC",
+    });
+  };
 
   function handleSubmit() {
     setLoading(true);
@@ -44,6 +51,8 @@ const SignUp = () => {
       } else if (password != confirmPassword) {
         showMessage("password not match");
       } else {
+        navigate("/login");
+        signUP();
         toast({
           description: "signup successful",
           status: "success",
@@ -51,8 +60,8 @@ const SignUp = () => {
           isClosable: true,
         });
       }
+
       setLoading(false);
-      navigate("/login");
     }, 1000);
   }
   return (
