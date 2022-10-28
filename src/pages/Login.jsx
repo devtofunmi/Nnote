@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 
 const Login = () => {
   const [show, setShow] = React.useState(false);
@@ -32,6 +33,13 @@ const Login = () => {
     });
   };
 
+  const logIn = async () => {
+    let { user, error } = await supabase.auth.signInWithPassword({
+      email: "someone@email.com",
+      password: "yFOKuogVcHWgMcwiFPMd",
+    });
+  };
+
   function handleSubmit() {
     setLoading(true);
     setTimeout(() => {
@@ -41,6 +49,7 @@ const Login = () => {
         showMessage("enter password");
       } else {
         navigate("/dashboard/main");
+        logIn();
 
         toast({
           description: "login successful",
