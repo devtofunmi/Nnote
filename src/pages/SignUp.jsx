@@ -34,8 +34,8 @@ const SignUp = () => {
   };
   const signUP = async () => {
     let { email, password } = await supabase.auth.signUp({
-      email: "someone@email.com",
-      password: "CZBRYwEHDObtGEkqdxpC",
+      email: email,
+      password: password,
     });
   };
 
