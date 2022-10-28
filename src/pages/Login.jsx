@@ -40,6 +40,8 @@ const Login = () => {
       } else if (!password) {
         showMessage("enter password");
       } else {
+        navigate("/dashboard/main");
+
         toast({
           description: "login successful",
           status: "success",
@@ -48,7 +50,6 @@ const Login = () => {
         });
       }
       setLoading(false);
-      navigate("/dashboard/main");
     }, 1000);
   }
   return (
