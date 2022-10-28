@@ -35,8 +35,8 @@ const Login = () => {
 
   const logIn = async () => {
     let { user, error } = await supabase.auth.signInWithPassword({
-      email: "someone@email.com",
-      password: "yFOKuogVcHWgMcwiFPMd",
+      email: email,
+      password: password,
     });
   };
 
