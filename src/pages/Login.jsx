@@ -47,7 +47,7 @@ const Login = () => {
         showMessage("enter password");
       } else if (error) {
         console.log(error);
-        showMessage("incorrect password");
+        showMessage("email or password incorrect");
       } else {
         navigate("/dashboard/main");
 
