@@ -33,36 +33,41 @@ const SignUp = () => {
     });
   };
   const signUP = async () => {
-    await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
+    await supabase.auth
+      .signUp({
+        email: email,
+        password: password,
+      })
+      .then((data) => {
+        console.log(data);
+        setLoading(true);
+        setTimeout(() => {
+          if (!email) {
+            showMessage("enter email");
+          } else if (!password) {
+            showMessage("enter password");
+          } else if (!confirmPassword) {
+            showMessage("enter confirm password");
+          } else if (password != confirmPassword) {
+            showMessage("password not match");
+          } else if (data.error) {
+            showMessage(data.error.message);
+          } else {
+            navigate("/login");
+            toast({
+              description: "signup successful",
+              status: "success",
+              duration: 1000,
+              isClosable: true,
+            });
+          }
+        }, 1000);
+        setLoading(false);
+      });
   };
 
   function handleSubmit() {
-    setLoading(true);
-    setTimeout(() => {
-      if (!email) {
-        showMessage("enter email");
-      } else if (!password) {
-        showMessage("enter password");
-      } else if (!confirmPassword) {
-        showMessage("enter confirm password");
-      } else if (password != confirmPassword) {
-        showMessage("password not match");
-      } else {
-        navigate("/login");
-        signUP();
-        toast({
-          description: "signup successful",
-          status: "success",
-          duration: 1000,
-          isClosable: true,
-        });
-      }
-
-      setLoading(false);
-    }, 1000);
+    signUP();
   }
   return (
     <>
