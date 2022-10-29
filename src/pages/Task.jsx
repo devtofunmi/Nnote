@@ -60,7 +60,7 @@ const Task = () => {
   return (
     <>
       <DashboardLayout>
-        <Flex pl={"20px"}>
+        <Flex pl={"20px"} mt={"20px"}>
           <AddTask
             isOpen={showAddNewTaskPopup}
             closePopup={closePopup}
