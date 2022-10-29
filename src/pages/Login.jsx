@@ -38,6 +38,9 @@ const Login = () => {
       email: email,
       password: password,
     });
+    if (error) {
+      console.log(error);
+    }
   };
 
   function handleSubmit() {
