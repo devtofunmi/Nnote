@@ -38,21 +38,18 @@ const Login = () => {
       email: email,
       password: password,
     });
-    if (error) {
-      console.log(error);
-    }
-  };
 
-  function handleSubmit() {
     setLoading(true);
     setTimeout(() => {
       if (!email) {
         showMessage("enter your email");
       } else if (!password) {
         showMessage("enter password");
+      } else if (error) {
+        console.log(error);
+        showMessage("incorrect password");
       } else {
         navigate("/dashboard/main");
-        logIn();
 
         toast({
           description: "login successful",
@@ -63,6 +60,10 @@ const Login = () => {
       }
       setLoading(false);
     }, 1000);
+  };
+
+  function handleSubmit() {
+    logIn();
   }
   return (
     <>
