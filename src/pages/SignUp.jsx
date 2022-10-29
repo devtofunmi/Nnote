@@ -33,7 +33,7 @@ const SignUp = () => {
     });
   };
   const signUP = async () => {
-    let { email, password } = await supabase.auth.signUp({
+    await supabase.auth.signUp({
       email: email,
       password: password,
     });
