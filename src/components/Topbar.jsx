@@ -1,9 +1,18 @@
 import { Avatar, Flex, Input, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { supabase } from "../../supabaseClient";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 const Topbar = () => {
   const { width } = useWindowDimensions();
+  const [displayName, setDisplayName] = useState("");
+
+  useEffect(() => {
+    async function getUserData() {
+      console.log(await (await supabase.auth.getUser()).data);
+    }
+    getUserData();
+  }, []);
 
   return (
     <Flex justify={"space-between"} px={3} py={2} bg={"#181819"}>
