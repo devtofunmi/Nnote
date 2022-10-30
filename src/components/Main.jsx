@@ -415,7 +415,10 @@ const Main = () => {
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
-                    onClick={handlePopup}
+                    onClick={() => {
+                      handlePopup();
+                      populateModal(note.id);
+                    }}
                   >
                     <Flex>
                       <Box w={"80%"} h={"150px"}>
@@ -451,7 +454,10 @@ const Main = () => {
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
-                    onClick={handlePopup}
+                    onClick={() => {
+                      handlePopup();
+                      populateModal(note.id);
+                    }}
                   >
                     <Flex>
                       <Box w={"80%"} h={"150px"}>
@@ -486,7 +492,10 @@ const Main = () => {
                     bg={"#181819"}
                     p={"17px"}
                     borderRadius={"10px"}
-                    onClick={handlePopup}
+                    onClick={() => {
+                      handlePopup();
+                      populateModal(note.id);
+                    }}
                   >
                     <Flex>
                       <Box w={"80%"} h={"150px"}>
