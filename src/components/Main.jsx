@@ -19,6 +19,7 @@ import { MdBookmarkAdd } from "react-icons/md";
 import DashboardLayout from "../layout/DashboardLayout";
 import ViewNote from "./ViewNote";
 import Topbar from "./Topbar";
+import { supabase } from "../../supabaseClient";
 
 const Main = () => {
   const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
@@ -247,7 +248,17 @@ const Main = () => {
       isClosable: true,
     });
   };
+
   const addNewNote = (title, content, date) => {
+    const note = async () => {
+      const { data, error } = await supabase
+        .from("notes")
+        .insert({ id: id, title: title, content: content })
+        .then((data) => {
+          console.log(data);
+        });
+    };
+
     if (!title) {
       showError("enter title");
     } else if (!content) {
@@ -260,13 +271,14 @@ const Main = () => {
         isClosable: true,
       });
     }
+    note();
 
-    const note = {
-      title,
-      content,
-      date,
-    };
-    setNotes([...notes, note]);
+    // const note = {
+    //   title,
+    //   content,
+    //   date,
+    // };
+    // setNotes([...notes, note]);
     // console.log(note);
   };
 
