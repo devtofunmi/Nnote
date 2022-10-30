@@ -362,7 +362,7 @@ const Main = () => {
         <Tabs mt={"30px"}>
           <TabList>
             <Tab>Today</Tab>
-            <Tab>This weekk</Tab>
+            <Tab>This week</Tab>
             <Tab>This month</Tab>
             <Tab>All Notes</Tab>
           </TabList>
