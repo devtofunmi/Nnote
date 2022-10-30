@@ -251,26 +251,32 @@ const Main = () => {
 
   const addNewNote = (title, content, date) => {
     const note = async () => {
-      const { data, error } = await supabase
+      await supabase
         .from("notes")
-        .insert({ id: id, title: title, content: content })
+        .insert({
+          title: title,
+          content: content,
+          user_id: (await supabase.auth.getUser()).data.user.id,
+        })
         .then((data) => {
           console.log(data);
+          if (!title) {
+            showError("enter title");
+          } else if (!content) {
+            showError("enter note content");
+          } else if (data.error) {
+            showError(data.error.message);
+          } else {
+            toast({
+              description: "Note added successfully",
+              status: "success",
+              duration: 1500,
+              isClosable: true,
+            });
+          }
         });
     };
 
-    if (!title) {
-      showError("enter title");
-    } else if (!content) {
-      showError("enter note content");
-    } else {
-      toast({
-        description: "Note added successfully",
-        status: "success",
-        duration: 1500,
-        isClosable: true,
-      });
-    }
     note();
 
     // const note = {
