@@ -46,7 +46,6 @@ const Login = () => {
       } else if (!password) {
         showMessage("enter password");
       } else if (error) {
-        console.log(error.message);
         showMessage(error.message);
       } else {
         navigate("/dashboard/main");
