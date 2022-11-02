@@ -94,7 +94,9 @@ const Main = () => {
 
   const filterByDate = (from, to) => {
     return notes.filter((note) => {
-      return new Date(note.date) >= from && new Date(note.date) <= to;
+      return (
+        new Date(note.created_at) >= from && new Date(note.created_at) <= to
+      );
     });
   };
 
@@ -145,6 +147,7 @@ const Main = () => {
 
   return (
     <DashboardLayout>
+      <Button onClick={() => console.log(last24h())}>click</Button>
       <ViewNote
         isOpen={isOpen}
         handlePopup={handlePopup}
@@ -207,10 +210,12 @@ const Main = () => {
                       <Box w={"80%"} h={"150px"}>
                         <Text fontSize={["15px", "20px"]}>
                           {/* {truncateString(note.title)} */}
+                          pppp
                           {}
                         </Text>
                         <Text mt={5} fontSize={["10px", "15px"]}>
-                          {truncateString(note.content)}
+                          .....
+                          {/* {truncateString(note.content)} */}
                         </Text>
                       </Box>
                       <Button
@@ -229,7 +234,7 @@ const Main = () => {
               </Flex>
             </TabPanel>
 
-            <TabPanel>
+            {/* <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {filterNotes(thisWeek()).map((note) => (
                   <Box
@@ -266,10 +271,9 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel>
-            <TabPanel>
+            </TabPanel> */}
+            {/* <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
-                {/* <NoteCard /> */}
                 {filterNotes(thisMonth()).map((note) => (
                   <Box
                     key={note.id}
@@ -305,8 +309,8 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel>
-            <TabPanel>
+            </TabPanel> */}
+            {/* <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {filterNotes(notes).map((note) => (
                   <Box
@@ -343,7 +347,7 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel>
+            </TabPanel> */}
           </TabPanels>
         </Tabs>
       </Flex>
