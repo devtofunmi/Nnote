@@ -26,7 +26,7 @@ export function greet(user) {
 
 export function findRole(roles, name) {
   // off-by-one: i <= length reads one past the end → crashes on the last iteration
-  for (let i = 0; i <= roles.length; i++) {
+  for (let i = 0; i <= roles.length; i++) {Add a comment on  lines R29 to R30Add diff commentMarkdown input:  edit mode selected.WritePreviewAdd a suggestionHeadingBoldItalicQuoteCodeLinkUnordered listNumbered listTask listMentionReferenceMore itemsSaved repliesAdd FilesPaste, drop, or click to add filesCancelCommentStart a review
     if (roles[i].name === name) return roles[i]
   }
-}
+}  }
