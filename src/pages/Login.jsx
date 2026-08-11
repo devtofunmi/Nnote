@@ -34,31 +34,41 @@ const Login = () => {
   };
 
   const logIn = async () => {
-    let { user, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
-
     setLoading(true);
-    setTimeout(() => {
-      if (!email) {
-        showMessage("enter your email");
-      } else if (!password) {
-        showMessage("enter password");
-      } else if (error) {
+
+    if (!email) {
+      showMessage("Please enter your email.");
+      setLoading(false);
+      return;
+    } else if (!password) {
+      showMessage("Please enter your password.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      let { error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
         showMessage(error.message);
       } else {
         navigate("/dashboard/main");
-
         toast({
-          description: "login successful",
+          description: "Login successful!",
           status: "success",
           duration: 1000,
           isClosable: true,
         });
       }
+    } catch (err) {
+      console.error("Login error:", err);
+      showMessage("An unexpected error occurred during login.");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   function handleSubmit() {
@@ -115,6 +125,7 @@ const Login = () => {
             color="white"
             onClick={handleSubmit}
             mt={"20px"}
+            disabled={loading}
           >
             {loading ? (
               <Spinner
