@@ -5,13 +5,15 @@ import { MdOutlineClose } from "react-icons/md";
 const AddNote = ({ isOpen, closePopup, addNewNote }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const inputRef = useRef();
+  const titleInputRef = useRef();
+  const contentInputRef = useRef();
 
   const handleSubmit = () => {
     if (addNewNote(title, content, new Date())) {
       setTitle("");
       setContent("");
-      inputRef.current.value = "";
+      if (titleInputRef.current) titleInputRef.current.value = "";
+      if (contentInputRef.current) contentInputRef.current.value = "";
     }
   };
   return (
@@ -47,7 +49,7 @@ const AddNote = ({ isOpen, closePopup, addNewNote }) => {
             <Button
               bg={"blue.400"}
               _hover={{
-                backgroundColor: "rgba(#181819, 0.2)",
+                backgroundColor: "rgba(24, 24, 25, 0.2)",
               }}
               size={"sm"}
               cursor={"pointer"}
@@ -63,7 +65,7 @@ const AddNote = ({ isOpen, closePopup, addNewNote }) => {
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
-              ref={inputRef}
+              ref={titleInputRef}
             />
             <Textarea
               mt={"15px"}
@@ -72,13 +74,13 @@ const AddNote = ({ isOpen, closePopup, addNewNote }) => {
               onChange={(e) => {
                 setContent(e.target.value);
               }}
-              ref={inputRef}
+              ref={contentInputRef}
             />
             <Button
               mt={"20px"}
               bg={"blue.400"}
               _hover={{
-                backgroundColor: "rgba(#181819, 0.2)",
+                backgroundColor: "rgba(24, 24, 25, 0.2)",
               }}
               onClick={() => {
                 handleSubmit();
