@@ -2,7 +2,6 @@ import { Box, Flex, Text, Checkbox, Button, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import DashboardLayout from "../layout/DashboardLayout";
 import AddTask from "../components/AddTask";
-import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 
 const Task = () => {
   const [showAddNewTaskPopup, setShowAddNewTaskPopup] = useState(false);
@@ -22,7 +21,7 @@ const Task = () => {
   };
   const addNewTask = (task) => {
     if (!task) {
-      showError("enter task");
+      showError("Please enter a task.");
 
       return false;
     } else {
@@ -50,7 +49,7 @@ const Task = () => {
           ...task,
           complete: !task.complete,
         };
-      }
+      }S
       return task;
     });
 
@@ -81,12 +80,11 @@ const Task = () => {
               {tasks
                 .filter((task) => !task.complete)
                 .map((t) => (
-                  <Box key={t.id}>
+                  <Box key={t.id} py={1}>
                     <Flex alignItems={"center"} gap={"5px"}>
-                      <BsCheckCircle
-                        onClick={() => {
-                          complete(t.id);
-                        }}
+                      <Checkbox
+                        isChecked={t.complete}
+                        onChange={() => complete(t.id)}
                       />
                       <Text>{t.task}</Text>
                     </Flex>
@@ -100,12 +98,10 @@ const Task = () => {
               {tasks
                 .filter((task) => task.complete)
                 .map((t) => (
-                  <Flex gap={"5px"} alignItems={"center"} key={t.id}>
-                    <BsCheckCircleFill
-                      checked={t.complete}
-                      onClick={() => {
-                        complete(t.id);
-                      }}
+                  <Flex gap={"5px"} alignItems={"center"} key={t.id} py={1}>
+                    <Checkbox
+                      isChecked={t.complete}
+                      onChange={() => complete(t.id)}
                     />
                     <Text textDecoration={"line-through"}>{t.task}</Text>
                   </Flex>
