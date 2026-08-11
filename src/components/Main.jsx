@@ -36,13 +36,18 @@ const Main = () => {
     setIsOpen(!isOpen);
   };
   const getUserNote = async () => {
-    const data = await supabase
+    const { data, error } = await supabase
       .from("notes")
       .select("*")
       .eq("user_id", (await supabase.auth.getUser()).data.user.id);
 
-    console.log(data.data);
-    setNotes([data?.data]);
+    if (error) {
+      console.error("Error fetching notes:", error.message);
+      showError("Failed to load notes.");
+    } else {
+      console.log(data);
+      setNotes(data || []);
+    }
   };
 
   useEffect(() => {
@@ -61,42 +66,53 @@ const Main = () => {
     });
   };
 
-  const addNewNote = (title, content, date) => {
-    const note = async () => {
-      await supabase
-        .from("notes")
-        .insert({
-          title: title,
-          content: content,
-          user_id: (await supabase.auth.getUser()).data.user.id,
-        })
-        .then((data) => {
-          console.log(data);
-          if (!title) {
-            showError("enter title");
-          } else if (!content) {
-            showError("enter note content");
-          } else if (data.error) {
-            showError(data.error.message);
-          } else {
-            toast({
-              description: "Note added successfully",
-              status: "success",
-              duration: 1500,
-              isClosable: true,
-            });
-          }
-        });
-    };
+  const addNewNote = async (title, content) => {
+    if (!title) {
+      showError("Please enter a title.");
+      return false;
+    } else if (!content) {
+      showError("Please enter note content.");
+      return false;
+    }
 
-    note();
+    try {
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+      if (userError || !userData?.user) {
+        showError("User not authenticated.");
+        return false;
+      }
+      const userId = userData.user.id;
+
+      const { data, error } = await supabase.from("notes").insert({
+        title: title,
+        content: content,
+        user_id: userId,
+      });
+
+      if (error) {
+        showError(error.message);
+        return false;
+      } else {
+        toast({
+          description: "Note added successfully",
+          status: "success",
+          duration: 1500,
+          isClosable: true,
+        });
+        getUserNote(); // Refresh notes after adding
+        return true;
+      }
+    } catch (err) {
+      console.error("Error adding note:", err);
+      showError("An unexpected error occurred.");
+      return false;
+    }
   };
 
   const filterByDate = (from, to) => {
     return notes.filter((note) => {
-      return (
-        new Date(note.created_at) >= from && new Date(note.created_at) <= to
-      );
+      const noteDate = new Date(note.created_at);
+      return noteDate >= from && noteDate <= to;
     });
   };
 
@@ -108,12 +124,14 @@ const Main = () => {
 
   const thisWeek = () => {
     const date = new Date();
-    const weekStart = new Date(date.setDate(date.getDate() - date.getDay()));
-    const weekEnd = new Date(date.setDate(date.getDate() - date.getDay() + 6));
+    const dayOfWeek = date.getDay(); // 0 for Sunday, 1 for Monday, etc.
+    const diff = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // Adjust for Monday start of week
+    const weekStart = new Date(date.setDate(diff));
     weekStart.setHours(0, 0, 0, 0);
-    weekEnd.setHours(168, 413, 413, 6993);
 
-    // console.log(filterByDate(weekStart, weekEnd));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    weekEnd.setHours(23, 59, 59, 999);
 
     return filterByDate(weekStart, weekEnd);
   };
@@ -121,10 +139,7 @@ const Main = () => {
   const thisMonth = () => {
     const date = new Date();
     const monthStart = new Date(date.getFullYear(), date.getMonth(), 1);
-    const monthEnd = new Date(
-      date.setDate(date.getFullYear(), date.getMonth() + 1, 0)
-    );
-    // console.log(monthStart);
+    const monthEnd = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
     return filterByDate(monthStart, monthEnd);
   };
@@ -139,7 +154,7 @@ const Main = () => {
     if (!searchQuery) {
       return notesArr;
     } else {
-      return notes.filter((note) => {
+      return notesArr.filter((note) => {
         return note.title.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
@@ -210,18 +225,18 @@ const Main = () => {
                       <Box w={"80%"} h={"150px"}>
                         <Text fontSize={["15px", "20px"]}>
                           {/* {truncateString(note.title)} */}
-                          pppp
+                          {truncateString(note.title)}
                           {}
                         </Text>
                         <Text mt={5} fontSize={["10px", "15px"]}>
-                          .....
+                          {truncateString(note.content)}
                           {/* {truncateString(note.content)} */}
                         </Text>
                       </Box>
                       <Button
                         bg={"blue.400"}
                         _hover={{
-                          backgroundColor: "rgba(#181819, 0.2)",
+                          backgroundColor: "rgba(24, 24, 25, 0.2)",
                         }}
                       >
                         <Text fontSize={"2xl"}>
@@ -234,7 +249,7 @@ const Main = () => {
               </Flex>
             </TabPanel>
 
-            {/* <TabPanel>
+            <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {filterNotes(thisWeek()).map((note) => (
                   <Box
@@ -260,7 +275,7 @@ const Main = () => {
                       <Button
                         bg={"blue.400"}
                         _hover={{
-                          backgroundColor: "rgba(#181819, 0.2)",
+                          backgroundColor: "rgba(24, 24, 25, 0.2)",
                         }}
                       >
                         <Text fontSize={"2xl"}>
@@ -271,8 +286,8 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel> */}
-            {/* <TabPanel>
+            </TabPanel>
+            <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {filterNotes(thisMonth()).map((note) => (
                   <Box
@@ -298,7 +313,7 @@ const Main = () => {
                       <Button
                         bg={"blue.400"}
                         _hover={{
-                          backgroundColor: "rgba(#181819, 0.2)",
+                          backgroundColor: "rgba(24, 24, 25, 0.2)",
                         }}
                       >
                         <Text fontSize={"2xl"}>
@@ -309,8 +324,8 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel> */}
-            {/* <TabPanel>
+            </TabPanel>
+            <TabPanel>
               <Flex gap={"20px"} wrap={"wrap"}>
                 {filterNotes(notes).map((note) => (
                   <Box
@@ -336,7 +351,7 @@ const Main = () => {
                       <Button
                         bg={"blue.400"}
                         _hover={{
-                          backgroundColor: "rgba(#181819, 0.2)",
+                          backgroundColor: "rgba(24, 24, 25, 0.2)",
                         }}
                       >
                         <Text fontSize={"2xl"}>
@@ -347,7 +362,7 @@ const Main = () => {
                   </Box>
                 ))}
               </Flex>
-            </TabPanel> */}
+            </TabPanel>
           </TabPanels>
         </Tabs>
       </Flex>
