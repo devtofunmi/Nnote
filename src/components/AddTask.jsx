@@ -9,7 +9,7 @@ const AddTask = ({ isOpen, closePopup, addNewTask }) => {
   const handleSubmit = () => {
     if (addNewTask(task)) {
       setTask("");
-      inputRef.current.value = "";
+      if (inputRef.current) inputRef.current.value = "";
     }
   };
 
@@ -47,7 +47,7 @@ const AddTask = ({ isOpen, closePopup, addNewTask }) => {
               <Button
                 bg={"blue.400"}
                 _hover={{
-                  backgroundColor: "rgba(#181819, 0.2)",
+                  backgroundColor: "rgba(24, 24, 25, 0.2)",
                 }}
                 size={"sm"}
                 cursor={"pointer"}
@@ -69,7 +69,7 @@ const AddTask = ({ isOpen, closePopup, addNewTask }) => {
                 mt={"20px"}
                 bg={"blue.400"}
                 _hover={{
-                  backgroundColor: "rgba(#181819, 0.2)",
+                  backgroundColor: "rgba(24, 24, 25, 0.2)",
                 }}
                 onClick={() => {
                   handleSubmit();

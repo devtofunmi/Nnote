@@ -33,37 +33,48 @@ const SignUp = () => {
     });
   };
   const signUP = async () => {
-    await supabase.auth
-      .signUp({
+    setLoading(true);
+    if (!email) {
+      showMessage("Please enter your email.");
+      setLoading(false);
+      return;
+    } else if (!password) {
+      showMessage("Please enter a password.");
+      setLoading(false);
+      return;
+    } else if (!confirmPassword) {
+      showMessage("Please confirm your password.");
+      setLoading(false);
+      return;
+    } else if (password !== confirmPassword) {
+      showMessage("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
-      })
-      .then((data) => {
-        console.log(data);
-        setLoading(true);
-        setTimeout(() => {
-          if (!email) {
-            showMessage("enter email");
-          } else if (!password) {
-            showMessage("enter password");
-          } else if (!confirmPassword) {
-            showMessage("enter confirm password");
-          } else if (password != confirmPassword) {
-            showMessage("password not match");
-          } else if (data.error) {
-            showMessage(data.error.message);
-          } else {
-            navigate("/login");
-            toast({
-              description: "signup successful",
-              status: "success",
-              duration: 1000,
-              isClosable: true,
-            });
-          }
-        }, 1000);
-        setLoading(false);
       });
+
+      if (error) {
+        showMessage(error.message);
+      } else {
+        navigate("/login");
+        toast({
+          description: "Signup successful! Please check your email to verify.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+      showMessage("An unexpected error occurred during signup.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   function handleSubmit() {
@@ -128,6 +139,7 @@ const SignUp = () => {
             backgroundColor="#4cbf87"
             color="white"
             onClick={handleSubmit}
+            disabled={loading}
           >
             {loading ? (
               <Spinner

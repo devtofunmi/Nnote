@@ -1,15 +1,22 @@
-import { Avatar, Flex, Input, Text } from "@chakra-ui/react";
+import { Avatar, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
-import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 const Topbar = () => {
-  const { width } = useWindowDimensions();
-  const [displayName, setDisplayName] = useState("");
+  const [displayName, setDisplayName] = useState("Guest");
 
   useEffect(() => {
     async function getUserData() {
-      console.log(await (await supabase.auth.getUser()).data);
+      const { data, error } = await supabase.auth.getUser();
+      if (data?.user) {
+        // Supabase user object might not have a 'display_name' or 'name' directly.
+        // Often, it's in user_metadata or you might use email.
+        // For this example, let's use email or a default if no specific name field.
+        setDisplayName(data.user.email || "User");
+      } else if (error) {
+        console.error("Error fetching user data:", error.message);
+        setDisplayName("Guest");
+      }
     }
     getUserData();
   }, []);
@@ -27,7 +34,7 @@ const Topbar = () => {
         cursor={"pointer"}
         color={"#afb1b3"}
       >
-        <Text>Tofunmi</Text>
+        <Text>{displayName}</Text>
         <Avatar size={"sm"} />
       </Flex>
     </Flex>
